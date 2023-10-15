@@ -20,7 +20,7 @@ For More detailed instructions see [OpenVision]()
 
 1. Clone the repository:
 ```bash
-git clone .git
+git clone https://github.com/joshkuminski/OpenVision.git
 ```
 
 2. cd into repo and clone the multiple object tracking (MOT) project:
@@ -56,6 +56,4 @@ Custom weight files can be created using [OpenVision-Label]()
 ## Contact 
 For questions please email joshuakuminski.github@gmail.com
 For bugs and feature requests please visit [GitHub Issues](https://github.com/joshkuminski/Turning_Movement_Counter_Yolov7_StrongSort_OSNet/issues).
-
-=======
 
