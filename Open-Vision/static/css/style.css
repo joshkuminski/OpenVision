@@ -43,18 +43,9 @@
     margin: 0px;
     padding: 10px;
     border-radius: 8px;
-    border: 2px solid rgb(97, 23, 120);
-    color: rgb(97, 23, 120);
-    font-weight: 600;
-}
-
-.project_btn {
-    transition-duration: 0.4s;
-}
-
-.project_btn:hover {
-    color: white !important;
-    background-color: rgb(97, 23, 120);
+    border: 2px solid rgb(0, 0, 0);
+    background-color: rgb(58, 143, 127) ;
+    color: rgb(255, 255, 255);
     font-weight: 600;
 }
 
@@ -65,8 +56,9 @@
     margin: 0px;
     padding: 10px;
     border-radius: 8px;
-    border: 2px solid #4CAF50;
-    color: #4CAF50;
+    border: 2px solid rgb(0, 0, 0);
+    background-color: rgb(58, 143, 127) ;
+    color: rgb(255, 255, 255);
     font-weight: 600;
 }
 
@@ -75,8 +67,8 @@
 }
 
 .btn:hover {
-    color: white !important;
-    background-color: #4CAF50;
+    color: rgb(58, 143, 127) !important;
+    background-color: rgb(207, 216, 220)!important;
     font-weight: 600;
 }
 
@@ -92,18 +84,9 @@
     margin: 0px;
     padding: 10px;
     border-radius: 8px;
-    border: 2px solid #6495ED;
-    color: #6495ED;
-    font-weight: 600;
-}
-
-.edit_btn {
-    transition-duration: 0.4s;
-}
-
-.edit_btn:hover {
-    color: white !important;
-    background-color: #6495ED;
+    border: 2px solid rgb(0, 0, 0);
+    background-color: rgb(58, 143, 127) ;
+    color: rgb(255, 255, 255);
     font-weight: 600;
 }
 
@@ -114,18 +97,9 @@
     margin: 0px;
     padding: 10px;
     border-radius: 8px;
-    border: 2px solid #DC143C;
-    color: #DC143C;
-    font-weight: 600;
-}
-
-.mask_btn {
-    transition-duration: 0.8s;
-}
-
-.mask_btn:hover {
-    color: white !important;
-    background-color: #DC143C;
+    border: 2px solid rgb(0, 0, 0);
+    background-color: rgb(58, 143, 127) ;
+    color: rgb(255, 255, 255);
     font-weight: 600;
 }
 
@@ -136,41 +110,35 @@
     margin: 0px;
     padding: 10px;
     border-radius: 8px;
-    border: 2px solid gray;
-    color: gray;
+    border: 2px solid rgb(0, 0, 0);
+    background-color: rgb(58, 143, 127) ;
+    color: rgb(255, 255, 255);
     font-weight: 600;
 }
 
-.save_btn {
-    transition-duration: 0.4s;
-}
-
-.save_btn:hover {
-    color: white !important;
-    background-color: gray;
+#track-btn{
+	position: absolute;
+    top: 14px;
+    left: 770px;
+    margin: 0px;
+    padding: 10px;
+    border-radius: 8px;
+    border: 2px solid rgb(0, 0, 0);
+    background-color: rgb(58, 143, 127) ;
+    color: rgb(255, 255, 255);
     font-weight: 600;
 }
 
 #help-btn{
     position: absolute;
     top: 14px;
-    left: 770px;
+    left: 895px;
     margin: 0px;
     padding: 10px;
     border-radius: 8px;
-    border: 2px solid rgb(200, 203, 1);
-    color: rgb(200, 203, 1);
-    font-weight: 600;
-    background-color: white ;
-}
-
-.help_btn {
-    transition-duration: 0.2s;
-}
-
-.help_btn:hover {
-    color: white !important;
-    background-color: rgb(200, 203, 1) !important;
+    border: 2px solid rgb(0, 0, 0);
+    background-color: rgb(58, 143, 127) ;
+    color: rgb(255, 255, 255);
     font-weight: 600;
 }
 

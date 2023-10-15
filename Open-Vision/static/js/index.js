@@ -199,7 +199,7 @@ function activateAddingLine(){
     }
     
     //add a disable class when button is click so it cant be clicked a second time
-    $('.btn').addClass('disabled');
+    //$('.btn').addClass('disabled');
 
     //Add event listeners
     canvas.on('mouse:down', startAddingLine);

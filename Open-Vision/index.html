@@ -295,15 +295,26 @@
       </div>
     </div>
     <div id="toolbar"> 
-      <button id="project-btn" class="project_btn" onclick="openFile()">LOAD NEW PROJECT</button>
+      <button id="project-btn" class="btn" onclick="openFile()">LOAD NEW PROJECT</button>
       <button id="adding-line-btn" class="btn">ADD ZONE</button>
-      <button id="edit-line-btn" class="edit_btn">EDIT ZONE</button>
-      <button id="mask-btn" class="mask_btn">ADD MASK</button>
-      <button onClick="SaveData(this.id)" id="save-image-btn" class="save_btn">SAVE DETECTION ZONES</button>
-      <a id="help-btn" class="help_btn" href="./pages/help.html">HELP</a>
+      <button id="edit-line-btn" class="btn">EDIT ZONE</button>
+      <button id="mask-btn" class="btn">ADD MASK</button>
+      <button onClick="SaveData(this.id)" id="save-image-btn" class="btn">SAVE DETECTION ZONES</button>
+      <button id="track-btn" class="btn">RUN TRACK</button>
+      <button id="help-btn" class="btn">HELP</button>
       <button id="drawButton">Draw Perpendicular Lines</button>
-
     </div>
     <script src="static/js/index.js"></script>
+
+    <script>
+        document.getElementById("track-btn").addEventListener("click", function() {
+            window.location.href = "./pages/track.html";
+        });
+        document.getElementById("help-btn").addEventListener("click", function() {
+            //window.location.href = "./pages/help.html";
+            var newTab = window.open("./pages/help.html", "_blank");
+            newTab.focus();
+        });
+    </script>
   </body>
 </html>
