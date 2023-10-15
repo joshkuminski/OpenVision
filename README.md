@@ -1,3 +1,5 @@
+![OpenVision](https://github.com/joshkuminski/OpenVision/blob/main/OpenVisionB.png?raw=true)
+
 # OpenVision
 Object Detection and Tracking for Traffic Counts and Analytics.
 
@@ -6,4 +8,4 @@ This repository leverages the powerful capabilities of the [Yolov7_StrongSORT_OS
 # Background
 A Turning Movement Count, is commonly used in traffic engineering to model intersections and optimize signal timing.
 
-![OpenVision](https://github.com/joshkuminski/OpenVision/blob/main/OpenVisionB.png?raw=true)
+
