@@ -3,6 +3,7 @@
   <component name="VcsDirectoryMappings">
     <mapping directory="" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/Yolov7_StrongSORT_OSNet" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/Yolov7_StrongSORT_OSNet/strong_sort/deep/reid/deep-person-reid" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/Yolov7_StrongSORT_OSNet/yolov7" vcs="Git" />
   </component>
 </project>
