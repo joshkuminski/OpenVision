@@ -7,21 +7,19 @@
 
 }
 
-#features .canvas-container { margin: 30px auto; }
 .canvas-container{
-    top: -23px;
+    top: -27px !important;
     left: 5px;
     position: relative;
 }
 
 #canvas{
-	position: absolute;
 	background-color: rgb(208, 218, 223, 0) ;
 }
 
 #mask_canvas{
 	position: absolute;
-	top: -23px;
+	top: -27px;
     left: 5px;
 	background-color: rgb(208, 218, 223, 0) ;
 }
@@ -202,4 +200,34 @@
     position:absolute;
     top: 14px;
     left: 15px;
+}
+
+#demo_video{
+    position:absolute;
+    max-width: 1600px;
+    max-height: 800px;
+    margin: 20px;
+    border: 10px solid  rgb(58, 143, 127) ;
+    border-radius: 5px;
+}
+
+#help_text{
+    margin: 10px;
+    color: white;
+}
+
+#Ins_text{
+    margin: 10px;
+    color: white;
+    position: absolute;
+    top: 45px;
+    left: 1520px;
+}
+
+#bullet_text{
+    margin: 10px;
+    color: white;
+    position: absolute;
+    top: 100px;
+    left: 1350px;
 }
