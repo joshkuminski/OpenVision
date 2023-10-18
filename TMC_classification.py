@@ -1,11 +1,9 @@
 from itertools import islice
 import numpy as np
 import pandas as pd
-import pickle
 import math
 from collections import Counter
 import matplotlib.pyplot as plt
-import tracemalloc
 
 
 class TmcClassification:

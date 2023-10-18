@@ -1,6 +1,8 @@
 import argparse
-
+import json
 import os
+import shutil
+
 # limit the number of cpus used by high performance libraries
 os.environ["OMP_NUM_THREADS"] = "6"
 os.environ["OPENBLAS_NUM_THREADS"] = "6"
@@ -41,30 +43,7 @@ from Yolov7_StrongSORT_OSNet.strong_sort.utils.parser import get_config
 from Yolov7_StrongSORT_OSNet.strong_sort.strong_sort import StrongSORT
 
 # ****************************************************************
-#import pickle
 from TMC_Count import TmcCounter
-# Get Zone, colors from Flask app - main.py
-'''
-Zones = open("./Flask_App/zone_coords_pkl_dump.pkl", "rb")
-Zones = pickle.load(Zones)
-
-zone_colors = open("./Flask_App/colors_pkl_dump.pkl", "rb")
-zone_colors = pickle.load(zone_colors)
-
-# Load pickle file containing the zone definitions
-zone_def = open("./Flask_App/zone_pkl_dump.pkl", "rb")
-zone_def = pickle.load(zone_def)
-
-mask_path = os.path.join(ROOT, 'Flask_App\mask.pkl')
-if os.path.exists(mask_path):
-    mask = open("./Flask_App/mask.pkl", "rb")
-    mask = pickle.load(mask)
-else:
-    mask = []
-'''
-
-
-frame_data = [[[]]]
 # ****************************************************************
 
 VID_FORMATS = 'asf', 'avi', 'gif', 'm4v', 'mkv', 'mov', 'mp4', 'mpeg', 'mpg', 'ts', 'wmv'  # include video suffixes
@@ -101,7 +80,6 @@ def run(
         half=False,  # use FP16 half-precision inference
         dnn=False,  # use OpenCV DNN for ONNX inference
         start_time=1600,
-        flask_dir='default',
         #rtor=False,
 ):
 
@@ -128,7 +106,6 @@ def run(
 
     # ************************************************************
     # Copy output files into project
-    import shutil
     v_counts = ['TOTAL', 'CAR', 'TRUCK', 'BUS', 'BI']
     v_count = 0
     for _ in v_counts:
@@ -142,6 +119,8 @@ def run(
 
     # GET THE FILES FROM DOWNLOAD FOLDER AND PLACE IN /App_local/data/project/
     def get_last_n_files(folder_path, n, extension):
+        d = 0
+        var_name = ['mask', 'zone_def', 'filename', 'zone_colors', 'Zones']
         # Get a list of files in the folder sorted by modification time
         files = sorted(
             [f for f in os.listdir(folder_path) if f.endswith(extension)],
@@ -150,17 +129,39 @@ def run(
         )
         for file in files:
             file = downloads_folder + '/' + file
-            print(file)
-            dest_folder = './App_local/data/{}/'.format(project)
+            dest_folder = './Open-Vision/data/{}/'.format(project)
+            new_file = dest_folder + file.split('/')[-1]
+            print(new_file)
             shutil.copy2(file, dest_folder)
             os.remove(file)  # remove files from download folder
+            # LOAD THE WEB APP DATA
+            with open('{}'.format(new_file), 'r') as f:
+                globals()[var_name[d]] = json.load(f)
+            d = d + 1
+            f.close()
+
+    frame_data = [[[]]]
 
     downloads_folder = os.path.expanduser("~") + "/Downloads"  # Adjust the folder path as needed
-    os.makedirs('./App_local/data/{}/'.format(project), exist_ok=True)
+    os.makedirs('./Open-Vision/data/{}/'.format(project), exist_ok=True)
 
     n = 4  # Number of files to check
     extension = '.json'  # The file extension to filter for
     get_last_n_files(downloads_folder, n, extension)
+
+    new_zone_colors = []
+    color_list = []
+    for zone_color in zone_colors:
+        zone_color = zone_color.split('(')[-1]
+        zone_color = zone_color.split(')')[0]
+        zone_color = zone_color.split(',')
+        #new_zone_colors.append(zone_color)
+        for color in zone_color:
+            color_list.append(int(color))
+        new_zone_colors.append(color_list)
+        color_list = []
+
+    zone_colors = new_zone_colors  # Reset the variable name
 
     if save_txt:
         image_path = './{}/{}/images'.format(project, name)
@@ -466,7 +467,6 @@ def parse_opt():
     parser.add_argument('--half', action='store_true', help='use FP16 half-precision inference')
     parser.add_argument('--dnn', action='store_true', help='use OpenCV DNN for ONNX inference')
     parser.add_argument('--start-time', default=1600)
-    parser.add_argument('--flask-dir', default='default')
     #parser.add_argument('--RTOR', default=False)
     opt = parser.parse_args()
     opt.imgsz *= 2 if len(opt.imgsz) == 1 else 1  # expand
