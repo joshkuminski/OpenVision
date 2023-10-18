@@ -3,18 +3,17 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="static/css/style.css">
-    <script src="static/js/fabric.js"></script>
+    <link rel="stylesheet" href="./static/css/style.css">
+    <script src="./static/js/fabric.js"></script>
 
     <title>TMC App </title>
   </head>
   <body id="body">
     <div class="grid">
       <div>
-
-        <video width=1280 height=720 id="video" autoplay muted>
-          <source src="video\EXAMPLE.mp4" type="video/mp4">
-        </video>
+          <video width=1280 height=720 id="video" playsinline muted autoplay loop>
+              <source src="./video/EXAMPLE.mp4" type="video/mp4">
+          </video>
         <div class="canvas-container">
           <canvas id="mask_canvas"></canvas>
         </div>

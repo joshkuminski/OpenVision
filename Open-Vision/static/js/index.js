@@ -3,6 +3,18 @@ let canvas = new fabric.Canvas('canvas',{
     background: null,
 });
 
+
+document.addEventListener('DOMContentLoaded', ()=>{
+    let player = document.getElementById('video');
+    player.addEventListener('canplay', (ev)=>{
+        console.log('canplay',
+        ev.target.videoWidth,
+        ev.target.videoHeight);
+    })
+});
+
+
+
 let line;
 let mouseDown = false;
 let click_event;
