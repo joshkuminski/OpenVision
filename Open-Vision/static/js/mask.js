@@ -11,14 +11,21 @@ const ctx = mask_canvas.getContext('2d');
 // Create an empty array to store the polygon vertices
 let vertices = [];
 let Mask = [];
+let x;
+let y;
+let vertex_list = [];
 
 function activateMask(){
     mask_canvas.style.zIndex = '1'; // Set canvas2 to be behind canvas
 
     if (vertices.length > 0){
-        Mask.push({vertices});
-        console.log(Mask)
-        vertices = [];
+        vertices.forEach(vertex => {
+            x = vertex.x;
+            y = vertex.y;
+            vertex_list.push([x, y]);
+        });
+        Mask.push(vertex_list);
+        vertex_list = [];
     }
 };
 

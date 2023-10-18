@@ -14,7 +14,6 @@ document.addEventListener('DOMContentLoaded', ()=>{
 });
 
 
-
 let line;
 let mouseDown = false;
 let click_event;
