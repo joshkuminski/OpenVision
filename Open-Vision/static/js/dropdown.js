@@ -82,23 +82,23 @@ selectElements.forEach(select => {
             }
             q++;
         });
-        console.log(ZoneList);
 
         let filteredZoneList = [];
+        let index = [];
         let c = 0;
         let t = 0;
         ZoneList.forEach(zone => {
-            console.log(ZoneList[value - 1].quadrant);
             if (c < ZoneList[value - 1].quadrant){
-                //filteredZoneList[t] = ZoneList[c];
                 filteredZoneList[t] = zone;
-                ZoneList.splice(c, 1);
+                index[c] = ZoneList.findIndex((item) => item["quadrant"] == c);
                 t++;
             }
             c++;
         });
-        console.log(ZoneList);
-        console.log(filteredZoneList);
+
+        for (let i = index.length; i > 0; i--){
+            ZoneList.splice(index, 1);
+        }
 
         //sort both lists by Quadrant
         ZoneList.sort((a, b) => a.quadrant - b.quadrant);
@@ -109,48 +109,32 @@ selectElements.forEach(select => {
         });
         console.log(ZoneList);
 
-        // MOVE SELECTED TO THE FRONT OF THE LINE - ***will only work once right now
-        //const shift = ZoneList[value - 1];
-        //ZoneList.splice(value - 1, 1);
-        //ZoneList.unshift(shift);
-
-        // SET THE ENTER ZONE DROP DOWNS
-        let j = 0
-        let k = 0
+        // SET THE ENTER/EXIT ZONE DROP DOWNS
+        let j = 0;
+        let k = 0;
+        let n = 0;
+        direction = [3, 2, 1, 0];
         if (indx == 0){
-            for (var i = 0; i < (((midPoints.length + 1) * 4) + 1); i += 1) {
-            if (i < 4){
+            for (var i = 1; i < (midPoints.length * 4) + 1; i += 1) {
                 let e = document.getElementById(`drop_down_${k + 1}`);
-                e.selectedIndex = value;
+                let f = document.getElementById(`drop_down_${k + 3}`);
+                e.selectedIndex = ZoneList[j].originalZone;
+                f.selectedIndex = ZoneList[direction[n]].originalZone;
                 e.style.color = color_list[e.value - 1];
-                k += 4;
-                ZoneDef[k + 1] = Number(value);
-             }
-            else{
-                if (i == 4){
-                    k -= 4;
-                }
-                k += 4;
+                f.style.color = color_list[ZoneList[direction[n]].originalZone - 1];
+                ZoneDef[k + 1] = ZoneList[j].originalZone;
 
-                let e = document.getElementById(`drop_down_${k + 1}`);
-                e.selectedIndex = midPoints[j].quadrant;
-                e.style.color = color_list[e.value - 1];
-                ZoneDef[k + 1] = midPoints[j].quadrant;
-
-                if (i == 4){
-                    i += 1
-                }
-                else{
-                    if (i % 4 == 0){
-                        j += 1;
-                        };
-                    };
+                // Increment Values
+                k += 4;
+                n += 1;
+                if (i % 4 == 0){
+                    j += 1;
+                    n = 0;
+                    move_last = direction.pop();
+                    direction.splice(0, 0, move_last);
                 };
             };
         };
-
-
-
 
     });
 });
