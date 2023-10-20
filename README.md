@@ -1,4 +1,4 @@
-![OpenVision](https://github.com/joshkuminski/OpenVision/blob/main/Open-Vision/static/img/OpenVisionB.png)
+![OpenVision](https://github.com/joshkuminski/OpenVision/blob/main/Open-Vision/static/img/OVicon_1.png)
 
 _This repository is a work in progress_
 
