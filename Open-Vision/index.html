@@ -249,7 +249,8 @@
       <button id="edit-line-btn" class="btn">EDIT ZONE</button>
       <button id="mask-btn" class="btn">ADD MASK</button>
       <button onClick="SaveData(this.id)" id="save-image-btn" class="btn">SAVE DETECTION ZONES</button>
-      <button id="track-btn" class="btn">RUN TRACK</button>
+      <button id="track-btn" class="btn">RUN TRACK LOCAL</button>
+      <button id="clb-track-btn" class="btn">RUN TRACK COLAB</button>
       <button id="help-btn" class="btn">HELP</button>
 
     </div>
@@ -262,7 +263,12 @@
 
     <script>
         document.getElementById("track-btn").addEventListener("click", function() {
-            window.location.href = "./pages/track.html";
+            var newTab =  window.open("./pages/track.html", "_blank");
+            newTab.focus();
+        });
+        document.getElementById("clb-track-btn").addEventListener("click", function() {
+            var newTab = window.open("https://drive.google.com/file/d/1cO_PB-0fAVhQgy15IrIS3r89hfyTIUUd/view?usp=share_link", "_blank");
+            newTab.focus();
         });
         document.getElementById("help-btn").addEventListener("click", function() {
             //window.location.href = "./pages/help.html";
