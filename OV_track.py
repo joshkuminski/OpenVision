@@ -109,7 +109,7 @@ def run(
     v_counts = ['TOTAL', 'CAR', 'TRUCK', 'BUS', 'BI']
     v_count = 0
     for _ in v_counts:
-        s_f = 'Output_{}.txt'.format(v_counts[v_count])
+        s_f = './Output_Data/Output_{}.txt'.format(v_counts[v_count])
         destination_folder = './{}/{}/'.format(project, name)
         shutil.copy2(s_f, destination_folder)
         v_count += 1
