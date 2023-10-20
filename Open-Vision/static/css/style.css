@@ -127,10 +127,23 @@
     font-weight: 600;
 }
 
+#clb-track-btn{
+	position: absolute;
+    top: 14px;
+    left: 944px;
+    margin: 0px;
+    padding: 10px;
+    border-radius: 8px;
+    border: 2px solid rgb(0, 0, 0);
+    background-color: rgb(58, 143, 127) ;
+    color: rgb(255, 255, 255);
+    font-weight: 600;
+}
+
 #help-btn{
     position: absolute;
     top: 14px;
-    left: 895px;
+    left: 1118px;
     margin: 0px;
     padding: 10px;
     border-radius: 8px;
