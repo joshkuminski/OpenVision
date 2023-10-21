@@ -27,6 +27,7 @@ function activateMask(){
         Mask.push(vertex_list);
         vertex_list = [];
     }
+    vertices = [];
 };
 
 
@@ -66,13 +67,12 @@ function drawPolygon() {
 
         //Draw the Existing Polygons
         for (let j = 0; j < Mask.length; j++){
-
             ctx.beginPath();
             // Move to the first vertex
-            ctx.moveTo(Mask[j].vertices[0].x, Mask[j].vertices[0].y);
+            ctx.moveTo(Mask[j][0][0], Mask[j][0][1]);
             // Draw lines to the remaining vertices
-            for (let i = 1; i < Mask[j].vertices.length; i++) {
-            ctx.lineTo(Mask[j].vertices[i].x, Mask[j].vertices[i].y);
+            for (let i = 1; i < Mask[j].length; i++) {
+            ctx.lineTo(Mask[j][i][0], Mask[j][i][1]);
             }
             ctx.closePath();
 
