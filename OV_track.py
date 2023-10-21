@@ -80,7 +80,7 @@ def run(
         half=False,  # use FP16 half-precision inference
         dnn=False,  # use OpenCV DNN for ONNX inference
         start_time=1600,
-        #rtor=False,
+        colab=False,
 ):
 
     source = str(source)
@@ -118,7 +118,7 @@ def run(
     os.makedirs(data_path, exist_ok=True)
 
     # GET THE FILES FROM DOWNLOAD FOLDER AND PLACE IN /App_local/data/project/
-    def get_last_n_files(folder_path, n, extension):
+    def get_last_n_files(folder_path, extension, is_colab=False):
         d = 0
         var_name = ['mask', 'zone_def', 'filename', 'zone_colors', 'Zones']
         # Get a list of files in the folder sorted by modification time
@@ -127,27 +127,36 @@ def run(
             key=lambda x: os.path.getmtime(os.path.join(folder_path, x)),
             reverse=True
         )
-        for file in files:
-            file = downloads_folder + '/' + file
-            dest_folder = './Open-Vision/data/{}/'.format(project)
-            new_file = dest_folder + file.split('/')[-1]
-            print(new_file)
-            shutil.copy2(file, dest_folder)
-            os.remove(file)  # remove files from download folder
-            # LOAD THE WEB APP DATA
-            with open('{}'.format(new_file), 'r') as f:
-                globals()[var_name[d]] = json.load(f)
-            d = d + 1
-            f.close()
+        if is_colab:
+            for file in files:
+                with open('{}'.format(file), 'r') as f:
+                    globals()[var_name[d]] = json.load(f)
+                d += 1
+                f.close()
+        else:
+            for file in files:
+                file = folder_path + '/' + file
+                dest_folder = './Open-Vision/data/{}/'.format(project)
+                new_file = dest_folder + file.split('/')[-1]
+                shutil.copy2(file, dest_folder)
+                os.remove(file)  # remove files from download folder
+                # LOAD THE WEB APP DATA
+                with open('{}'.format(new_file), 'r') as f:
+                    globals()[var_name[d]] = json.load(f)
+                d += 1
+                f.close()
 
     frame_data = [[[]]]
 
-    downloads_folder = os.path.expanduser("~") + "/Downloads"  # Adjust the folder path as needed
+    downloads_folder = os.path.expanduser("~") + "/Downloads"
     os.makedirs('./Open-Vision/data/{}/'.format(project), exist_ok=True)
+    extension = '.json'
 
-    n = 4  # Number of files to check
-    extension = '.json'  # The file extension to filter for
-    get_last_n_files(downloads_folder, n, extension)
+    if not colab:
+        get_last_n_files(downloads_folder, extension)
+    else:
+        folder = './Open-Vision/data/{}'.format(project)
+        get_last_n_files(folder, extension, is_colab=True)
 
     new_zone_colors = []
     color_list = []
@@ -467,7 +476,7 @@ def parse_opt():
     parser.add_argument('--half', action='store_true', help='use FP16 half-precision inference')
     parser.add_argument('--dnn', action='store_true', help='use OpenCV DNN for ONNX inference')
     parser.add_argument('--start-time', default=1600)
-    #parser.add_argument('--RTOR', default=False)
+    parser.add_argument('--colab', default=False, action='store_true')
     opt = parser.parse_args()
     opt.imgsz *= 2 if len(opt.imgsz) == 1 else 1  # expand
 
