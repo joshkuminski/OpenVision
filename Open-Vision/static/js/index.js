@@ -22,6 +22,7 @@ let color;
 let color_str;
 let pad = 20;
 let color_list = [];
+let color_list_save = [];
 let color_dict = [];
 let StartZone = [];
 let ZoneList = [];
@@ -71,6 +72,7 @@ function startAddingLine(o){
     color = [getRandomInt(255), getRandomInt(255), getRandomInt(255)]; 
     color_str = `rgb(${color[0]},${color[1]},${color[2]})`;
     color_list.push(color_str);
+    color_list_save.push(color);
 
     //color_list.append(color_str);
     line = new fabric.Line([pointer.x, pointer.y, pointer.x, pointer.y], {
@@ -199,7 +201,7 @@ function  SaveData(id){
     let name = "Zone_Data";
     CreateDownload(current_time, data, name);
 
-    data = color_list;
+    data = color_list_save;
     name = "Color_Data";
     CreateDownload(current_time, data, name);
 
