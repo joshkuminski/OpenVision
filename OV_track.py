@@ -120,7 +120,7 @@ def run(
     # GET THE FILES FROM DOWNLOAD FOLDER AND PLACE IN /App_local/data/project/
     def get_last_n_files(folder_path, extension, is_colab=False):
         d = 0
-        var_name = ['mask', 'zone_def', 'zone_colors', 'filename', 'Zones']
+        var_name = ['filename', 'Zones',  'zone_def', 'zone_colors', 'mask']
         # Get a list of files in the folder sorted by modification time
         files = sorted(
             [f for f in os.listdir(folder_path) if f.endswith(extension)],
