@@ -119,8 +119,7 @@ def run(
     
     # GET THE FILES FROM DOWNLOAD FOLDER AND PLACE IN /App_local/data/project/
     def get_last_n_files(folder_path, extension, is_colab=False):
-        d = 0
-        var_name = ['filename', 'Zones',  'zone_def', 'zone_colors', 'mask']
+        var_name = ['mask', 'zone_def', 'filename', 'zone_colors', 'Zones']
         # Get a list of files in the folder sorted by modification time
         files = sorted(
             [f for f in os.listdir(folder_path) if f.endswith(extension)],
@@ -131,9 +130,17 @@ def run(
             for file in files:
                 print(file)
                 with open('{}'.format(file), 'r') as f:
-                    globals()[var_name[d]] = json.load(f)
-                
-                d += 1
+                    if file.split('_')[0] == 'Color':
+                        globals()[var_name[3]] = json.load(f)
+                    if file.split('_')[0] == 'Filename':
+                        globals()[var_name[2]] = json.load(f)
+                    if file.split('_')[0] == 'Mask':
+                        globals()[var_name[0]] = json.load(f)
+                    if file.split('_')[0] == 'Zone':
+                        if file.split('_')[1] == 'Data':
+                            globals()[var_name[4]] = json.load(f)
+                        else:
+                            globals()[var_name[1]] = json.load(f)
                 f.close()
         else:
             for file in files:
