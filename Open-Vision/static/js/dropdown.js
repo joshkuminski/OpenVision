@@ -11,113 +11,112 @@ selectElements.forEach(select => {
         indx = ID.split("_")[2] - 1
         ZoneDef[indx] = Number(value);
 
-        // CALCULATE THE MIDPOINT OF EACH ZONE SEGMENT
-        let midPoints = [];
-        let midPoint;
-        console.log(ZoneList);
-        ZoneList = ZoneList.slice(0,4);  // Just want the first 4 Zones
-        console.log(ZoneList);
-            for (var i = 0; i < ZoneList.length; i++) {
-                //if (i > 3){
-                //    break // ONLY INCLUDE THE FIRST 4 ZONES
-                //};
-                midPoint = calculateMidpoint(ZoneList[i][0][0],ZoneList[i][0][1],ZoneList[i][1][0],ZoneList[i][1][1]);
-                midPoints.push(midPoint);
+        if (indx == 0){
+            // CALCULATE THE MIDPOINT OF EACH ZONE SEGMENT
+            let midPoints = [];
+            let midPoint;
+            ZoneList = ZoneList.slice(0,4);  // Just want the first 4 Zones
+                for (var i = 0; i < ZoneList.length; i++) {
+                    //if (i > 3){
+                    //    break // ONLY INCLUDE THE FIRST 4 ZONES
+                    //};
+                    midPoint = calculateMidpoint(ZoneList[i][0][0],ZoneList[i][0][1],ZoneList[i][1][0],ZoneList[i][1][1]);
+                    midPoints.push(midPoint);
+                };
+
+            // CALCULATE THE CENTER OF THE ZONE BOX
+            // Initialize variables to store the smallest and largest values and their index
+            let smallestX = ZoneList[0][0][0];
+            let smallestY = ZoneList[0][0][1];
+            let largestX = ZoneList[0][0][0];
+            let largestY = ZoneList[0][0][1];
+            let smallestIndex_X = [0, 0];
+            let smallestIndex_Y = [0, 0];
+            let largestIndex_X = [0, 0];
+            let largestIndex_Y = [0, 0];
+
+            for (let i = 0; i < midPoints.length; i++) {
+                for (let j = 0; j < 2; j++){ //start and end point
+                    if (ZoneList[i][j][0] < smallestX) {
+                        smallestX = ZoneList[i][j][0];
+                        smallestIndex_X = [i, j];
+                    }
+                    if (ZoneList[i][j][1] < smallestY) {
+                        smallestY = ZoneList[i][j][1];
+                        smallestIndex_Y = [i, j];
+                    }
+                    if (ZoneList[i][j][0] > largestX) {
+                        largestX = ZoneList[i][j][0];
+                        largestIndex_X = [i, j];
+                    }
+                    if (ZoneList[i][j][1] > largestY) {
+                        largestY = ZoneList[i][j][1];
+                        largestIndex_Y = [i, j];
+                    }
+                }
             };
 
-        // CALCULATE THE CENTER OF THE ZONE BOX
-        // Initialize variables to store the smallest and largest values and their index
-        let smallestX = ZoneList[0][0][0];
-        let smallestY = ZoneList[0][0][1];
-        let largestX = ZoneList[0][0][0];
-        let largestY = ZoneList[0][0][1];
-        let smallestIndex_X = [0, 0];
-        let smallestIndex_Y = [0, 0];
-        let largestIndex_X = [0, 0];
-        let largestIndex_Y = [0, 0];
+            // Construct the line segments:
+            segment1 = [{x: ZoneList[smallestIndex_X[0]][smallestIndex_X[1]][0], y: ZoneList[smallestIndex_X[0]][smallestIndex_X[1]][1]},
+                         {x: ZoneList[largestIndex_X[0]][largestIndex_X[1]][0], y: ZoneList[largestIndex_X[0]][largestIndex_X[1]][1]}];
+            segment2 = [{x: ZoneList[smallestIndex_Y[0]][smallestIndex_Y[1]][0], y: ZoneList[smallestIndex_Y[0]][smallestIndex_Y[1]][1]},
+                         {x: ZoneList[largestIndex_Y[0]][largestIndex_Y[1]][0], y: ZoneList[largestIndex_Y[0]][largestIndex_Y[1]][1]}];
 
-        for (let i = 0; i < midPoints.length; i++) {
-            for (let j = 0; j < 2; j++){ //start and end point
-                if (ZoneList[i][j][0] < smallestX) {
-                    smallestX = ZoneList[i][j][0];
-                    smallestIndex_X = [i, j];
+            const intersection = calculateLineSegmentIntersection(segment1, segment2);
+
+            // DETERMINE THE QUADRANT THAT THE MIDPOINTS LIE
+            let quad;
+            let q = 0;
+            midPoints.forEach(point => {
+                ZoneList[q].originalZone = q + 1;
+                quad = [{x: (intersection.x - point.x), y: (intersection.y - point.y)}];
+                if (quad[0].x > 0 && quad[0].y > 0){
+                    ZoneList[q].quadrant = 0;
                 }
-                if (ZoneList[i][j][1] < smallestY) {
-                    smallestY = ZoneList[i][j][1];
-                    smallestIndex_Y = [i, j];
+                if (quad[0].x < 0 && quad[0].y > 0){
+                    ZoneList[q].quadrant = 1;
                 }
-                if (ZoneList[i][j][0] > largestX) {
-                    largestX = ZoneList[i][j][0];
-                    largestIndex_X = [i, j];
+                if (quad[0].x < 0 && quad[0].y < 0){
+                    ZoneList[q].quadrant = 2;
                 }
-                if (ZoneList[i][j][1] > largestY) {
-                    largestY = ZoneList[i][j][1];
-                    largestIndex_Y = [i, j];
+                if (quad[0].x > 0 && quad[0].y < 0){
+                    ZoneList[q].quadrant = 3;
                 }
+                q++;
+            });
+
+            let filteredZoneList = [];
+            let index = [];
+            let c = 0;
+            let t = 0;
+            ZoneList.forEach(zone => {
+                if (c < ZoneList[value - 1].quadrant){
+                    filteredZoneList[t] = zone;
+                    index[c] = ZoneList.findIndex((item) => item["quadrant"] == c);
+                    t++;
+                }
+                c++;
+            });
+
+            for (let i = index.length; i > 0; i--){
+                ZoneList.splice(index, 1);
             }
-        };
 
-        // Construct the line segments:
-        segment1 = [{x: ZoneList[smallestIndex_X[0]][smallestIndex_X[1]][0], y: ZoneList[smallestIndex_X[0]][smallestIndex_X[1]][1]},
-                     {x: ZoneList[largestIndex_X[0]][largestIndex_X[1]][0], y: ZoneList[largestIndex_X[0]][largestIndex_X[1]][1]}];
-        segment2 = [{x: ZoneList[smallestIndex_Y[0]][smallestIndex_Y[1]][0], y: ZoneList[smallestIndex_Y[0]][smallestIndex_Y[1]][1]},
-                     {x: ZoneList[largestIndex_Y[0]][largestIndex_Y[1]][0], y: ZoneList[largestIndex_Y[0]][largestIndex_Y[1]][1]}];
+            //sort both lists by Quadrant
+            ZoneList.sort((a, b) => a.quadrant - b.quadrant);
+            filteredZoneList.sort((a, b) => a.quadrant - b.quadrant);
 
-        const intersection = calculateLineSegmentIntersection(segment1, segment2);
+            filteredZoneList.forEach(zone => {
+                ZoneList.push(zone);
+            });
+            console.log(ZoneList);
 
-        // DETERMINE THE QUADRANT THAT THE MIDPOINTS LIE
-        let quad;
-        let q = 0;
-        midPoints.forEach(point => {
-            ZoneList[q].originalZone = q + 1;
-            quad = [{x: (intersection.x - point.x), y: (intersection.y - point.y)}];
-            if (quad[0].x > 0 && quad[0].y > 0){
-                ZoneList[q].quadrant = 0;
-            }
-            if (quad[0].x < 0 && quad[0].y > 0){
-                ZoneList[q].quadrant = 1;
-            }
-            if (quad[0].x < 0 && quad[0].y < 0){
-                ZoneList[q].quadrant = 2;
-            }
-            if (quad[0].x > 0 && quad[0].y < 0){
-                ZoneList[q].quadrant = 3;
-            }
-            q++;
-        });
+            // SET THE ENTER/EXIT ZONE DROP DOWNS
+            let j = 0;
+            let k = 0;
+            let n = 0;
+            direction = [3, 2, 1, 0];
 
-        let filteredZoneList = [];
-        let index = [];
-        let c = 0;
-        let t = 0;
-        ZoneList.forEach(zone => {
-            if (c < ZoneList[value - 1].quadrant){
-                filteredZoneList[t] = zone;
-                index[c] = ZoneList.findIndex((item) => item["quadrant"] == c);
-                t++;
-            }
-            c++;
-        });
-
-        for (let i = index.length; i > 0; i--){
-            ZoneList.splice(index, 1);
-        }
-
-        //sort both lists by Quadrant
-        ZoneList.sort((a, b) => a.quadrant - b.quadrant);
-        filteredZoneList.sort((a, b) => a.quadrant - b.quadrant);
-
-        filteredZoneList.forEach(zone => {
-            ZoneList.push(zone);
-        });
-        console.log(ZoneList);
-
-        // SET THE ENTER/EXIT ZONE DROP DOWNS
-        let j = 0;
-        let k = 0;
-        let n = 0;
-        direction = [3, 2, 1, 0];
-        if (indx == 0){
             for (var i = 1; i < (midPoints.length * 4) + 1; i += 1) {
                 let e = document.getElementById(`drop_down_${k + 1}`);
                 let f = document.getElementById(`drop_down_${k + 3}`);
@@ -139,6 +138,5 @@ selectElements.forEach(select => {
                 };
             };
         };
-
     });
 });
