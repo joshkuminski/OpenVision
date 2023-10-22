@@ -232,7 +232,7 @@
 #Ins_text{
     margin: 10px;
     color: white;
-    position: absolute;
+    position: relative;
     top: 45px;
     left: 1520px;
 }
@@ -240,7 +240,7 @@
 #bullet_text{
     margin: 10px;
     color: white;
-    position: absolute;
-    top: 100px;
+    position: relative;
+    top: 50px;
     left: 1350px;
 }
