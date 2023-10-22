@@ -122,7 +122,8 @@ selectElements.forEach(select => {
                 f.selectedIndex = ZoneList[direction[n]].originalZone;
                 e.style.color = color_list[e.value - 1];
                 f.style.color = color_list[ZoneList[direction[n]].originalZone - 1];
-                ZoneDef[k + 1] = ZoneList[j].originalZone;
+                ZoneDef[k] = ZoneList[j].originalZone;
+                ZoneDef[k + 2] = ZoneList[direction[n]].originalZone;
 
                 // Increment Values
                 k += 4;
