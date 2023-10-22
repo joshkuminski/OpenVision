@@ -14,10 +14,13 @@ selectElements.forEach(select => {
         // CALCULATE THE MIDPOINT OF EACH ZONE SEGMENT
         let midPoints = [];
         let midPoint;
+        console.log(ZoneList);
+        ZoneList = ZoneList.slice(0,4);  // Just want the first 4 Zones
+        console.log(ZoneList);
             for (var i = 0; i < ZoneList.length; i++) {
-                if (i > 3){
-                    break // ONLY INCLUDE THE FIRST 4 ZONES
-                };
+                //if (i > 3){
+                //    break // ONLY INCLUDE THE FIRST 4 ZONES
+                //};
                 midPoint = calculateMidpoint(ZoneList[i][0][0],ZoneList[i][0][1],ZoneList[i][1][0],ZoneList[i][1][1]);
                 midPoints.push(midPoint);
             };
@@ -33,7 +36,7 @@ selectElements.forEach(select => {
         let largestIndex_X = [0, 0];
         let largestIndex_Y = [0, 0];
 
-        for (let i = 0; i < ZoneList.length; i++) {
+        for (let i = 0; i < midPoints.length; i++) {
             for (let j = 0; j < 2; j++){ //start and end point
                 if (ZoneList[i][j][0] < smallestX) {
                     smallestX = ZoneList[i][j][0];
