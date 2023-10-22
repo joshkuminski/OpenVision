@@ -116,7 +116,8 @@ def run(
 
     data_path = './{}/{}/data'.format(project, name)
     os.makedirs(data_path, exist_ok=True)
-    zone_colors=[]
+    zone_colors = []
+    
     # GET THE FILES FROM DOWNLOAD FOLDER AND PLACE IN /App_local/data/project/
     def get_last_n_files(folder_path, extension, is_colab=False):
         d = 0
@@ -131,6 +132,7 @@ def run(
             for file in files:
                 with open('{}'.format(file), 'r') as f:
                     globals()[var_name[d]] = json.load(f)
+                print(var_name[d])
                 d += 1
                 f.close()
         else:
