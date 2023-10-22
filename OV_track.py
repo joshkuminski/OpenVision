@@ -171,7 +171,11 @@ def run(
         color_list = []
 
     zone_colors = new_zone_colors  # Reset the variable name
-
+    print(zone_colors)
+    print(zone_def)
+    print(mask)
+    print(Zones)
+    
     if save_txt:
         image_path = './{}/{}/images'.format(project, name)
         os.makedirs(image_path, exist_ok=True)
