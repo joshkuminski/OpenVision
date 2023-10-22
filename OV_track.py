@@ -116,7 +116,6 @@ def run(
 
     data_path = './{}/{}/data'.format(project, name)
     os.makedirs(data_path, exist_ok=True)
-    zone_colors = []
     
     # GET THE FILES FROM DOWNLOAD FOLDER AND PLACE IN /App_local/data/project/
     def get_last_n_files(folder_path, extension, is_colab=False):
@@ -160,19 +159,6 @@ def run(
         folder = './Open-Vision/data/{}'.format(project)
         get_last_n_files(folder, extension, is_colab=True)
 
-    new_zone_colors = []
-    color_list = []
-    for zone_color in zone_colors:
-        zone_color = zone_color.split('(')[-1]
-        zone_color = zone_color.split(')')[0]
-        zone_color = zone_color.split(',')
-        #new_zone_colors.append(zone_color)
-        for color in zone_color:
-            color_list.append(int(color))
-        new_zone_colors.append(color_list)
-        color_list = []
-
-    zone_colors = new_zone_colors  # Reset the variable name
     print(zone_colors)
     print(zone_def)
     print(mask)
