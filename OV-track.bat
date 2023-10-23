@@ -12,15 +12,17 @@ if %errorlevel% equ 0 (
     for /f "tokens=1,2 delims=," %%i in ('nvidia-smi --query-gpu=index,name --format=csv,noheader,nounits') do (
         set /a index=%%i
         set name=%%j
+        set device=index
         echo GPU !index!: !name!
     )
     nvidia-smi
 ) else (
     echo GPU is not available or nvidia-smi is not installed.
+    set device="cpu"
 )
 
 endlocal
 
-python %~dp0\OV_track.py --source ./Open-Vision/video/EXAMPLE.mp4 --device 0 --project "New Project" --name "Name" --save-vid --strong-sort-weights ./weights/osnet_x1_0_market1501.pt
+python %~dp0OV_track.py --source ./Open-Vision/video/EXAMPLE.mp4 --device "%device%" --project "New Project" --name "Name" --save-vid --strong-sort-weights ./weights/osnet_x1_0_market1501.pt --yolo-weights ./weights/yolov7-OVcustom-v1_4.pt --classes 0 1 2 5
 timeout /T 15
 deactivate
