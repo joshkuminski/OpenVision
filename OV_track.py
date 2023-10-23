@@ -11,7 +11,7 @@ os.environ["VECLIB_MAXIMUM_THREADS"] = "6"
 os.environ["NUMEXPR_NUM_THREADS"] = "6"
 
 import sys
-import numpy as np
+#import numpy as np
 from pathlib import Path
 import torch
 import torch.backends.cudnn as cudnn
@@ -116,7 +116,7 @@ def run(
 
     data_path = './{}/{}/data'.format(project, name)
     os.makedirs(data_path, exist_ok=True)
-    
+
     # GET THE FILES FROM DOWNLOAD FOLDER AND PLACE IN /App_local/data/project/
     def get_last_n_files(folder_path, extension, is_colab=False):
         var_name = ['mask', 'zone_def', 'filename', 'zone_colors', 'Zones']
@@ -128,7 +128,6 @@ def run(
         )
         if is_colab:
             for file in files:
-                print(file)
                 with open('{}'.format(file), 'r') as f:
                     if file.split('_')[0] == 'Color':
                         globals()[var_name[3]] = json.load(f)
@@ -148,11 +147,21 @@ def run(
                 dest_folder = './Open-Vision/data/{}/'.format(project)
                 new_file = dest_folder + file.split('/')[-1]
                 shutil.copy2(file, dest_folder)
-                os.remove(file)  # remove files from download folder
+                #os.remove(file)  # remove files from download folder
                 # LOAD THE WEB APP DATA
                 with open('{}'.format(new_file), 'r') as f:
-                    globals()[var_name[d]] = json.load(f)
-                d += 1
+                    split_file = new_file.split('/')[-1]
+                    if split_file.split('_')[0] == 'Color':
+                        globals()[var_name[3]] = json.load(f)
+                    if split_file.split('_')[0] == 'Filename':
+                        globals()[var_name[2]] = json.load(f)
+                    if split_file.split('_')[0] == 'Mask':
+                        globals()[var_name[0]] = json.load(f)
+                    if split_file.split('_')[0] == 'Zone':
+                        if split_file.split('_')[1] == 'Data':
+                            globals()[var_name[4]] = json.load(f)
+                        else:
+                            globals()[var_name[1]] = json.load(f)
                 f.close()
 
     frame_data = [[[]]]
@@ -167,11 +176,6 @@ def run(
         folder = './Open-Vision/data/{}'.format(project)
         get_last_n_files(folder, extension, is_colab=True)
 
-    print(zone_colors)
-    print(zone_def)
-    print(mask)
-    print(Zones)
-    
     if save_txt:
         image_path = './{}/{}/images'.format(project, name)
         os.makedirs(image_path, exist_ok=True)
