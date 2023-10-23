@@ -11,9 +11,12 @@ This repository leverages the powerful capabilities of the [Yolov7_StrongSORT_OS
 A Turning Movement Count, is commonly used in traffic engineering to model intersections and optimize signal timing.
 
 # Instructions
+## Prerequisites
 For More detailed instructions see [OpenVision]()
 1. Install [python 3.8](https://www.python.org/downloads/release/python-380/):
-
+2. CUDA (If valid GPU is available)
+3. cuDNN:[follow these instructions](https://docs.nvidia.com/deeplearning/cudnn/install-guide/index.html#install-windows)
+   - I recommend using cuDNN v8.3.2 and Cuda 11.3, if you go with something different you will need to update requirements_gpu.txt.
 
 
 ## Before you run the tracker
@@ -45,9 +48,15 @@ cd strong_sort\deep\reid
 git clone https://github.com/joshkuminski/deep-person-reid.git
 ```
 
-5. Make sure that you fulfill all the requirements: Python 3.8 or later with all [requirements.txt](requirements.txt) dependencies installed, including torch>=1.7. If you have a supported NVIDIA gpu, you need to comment out the torch install lines in requirements.txt. There are additional requirements if utilizing a gpu - [follow these instructions](https://docs.nvidia.com/deeplearning/cudnn/install-guide/index.html#install-windows). I recommend using cuDNN v8.3.2 and Cuda 11.3, if you go with something different you will need to update requirements_gpu.txt.   
+# Install Requirements 
+## Windows
+1. Run install.cmd, a virtual environment will be created and will install all the requirements in requirements.txt. 
+If you have a supported NVIDIA gpu, run install_gpu.cmd.   
 
-## Install Requirements                                                                                               
+## Apple macOS
+Not tested
+
+# Run the Application
 
 ### Custom Dataset
 Custom weight files can be created using [OpenVision-Label]()
