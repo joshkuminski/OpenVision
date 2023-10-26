@@ -1,3 +1,8 @@
+//create random int
+function getRandomInt(max) {
+  return Math.floor(Math.random() * max);
+};
+
 function calculateMidpoint(x1, y1, x2, y2) {
     const midpointX = (x1 + x2) / 2;
     const midpointY = (y1 + y2) / 2;

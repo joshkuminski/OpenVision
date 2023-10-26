@@ -35,11 +35,6 @@ let ZoneDef = Array(64).fill(0);
 let addingLineBtn = document.getElementById("adding-line-btn");
 addingLineBtn.addEventListener('click', activateAddingLine);
 
-//create random int
-function getRandomInt(max) {
-  return Math.floor(Math.random() * max);
-};
-
 
 //TODO: allow add click only once
 function activateAddingLine(){
