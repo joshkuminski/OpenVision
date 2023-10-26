@@ -20,9 +20,10 @@ A Turning Movement Count, is commonly used in traffic engineering to model inter
 
 # Instructions
 ## Prerequisites for GPU
-For More detailed instructions see [OpenVision]()
+For More detailed instructions see [NVIDIA Docs](https://docs.nvidia.com/deeplearning/cudnn/install-guide/index.html#install-windows)
 1. NVIDIA CUDA Toolkit: [CUDA(v11.3)](https://developer.nvidia.com/cuda-11.3.0-download-archive)
-2. cuDNN:[follow these instructions](https://docs.nvidia.com/deeplearning/cudnn/install-guide/index.html#install-windows)
+2. NVIDIA Graphic Driver for your GPU.[NVIDIA Drivers](https://www.nvidia.com/Download/index.aspx?lang=en-us)
+3. cuDNN:[cuDNN](https://developer.nvidia.com/cudnn), Need to be registered for the NVIDIA Developer Program.
    - This project has only been tested with cuDNN v8.3.2 and Cuda v11.3. If you use a different version, update requirements_gpu.txt.
 
 ## 1. Clone this repo
@@ -36,7 +37,7 @@ download the .zip file
 ### Windows
 Run the 'install.cmd' file as *Administrator* located in the root directory
    This will install the submodules for this project along with, Python 3.8.10, and Git. It will also create a virtual 
-   environment and install requirements.txt
+   environment and install project requirements.txt
 * If you have a supported NVIDIA GPU, also run the 'install_gpu.cmd' file. This will install requirements_gpu.txt
 ### Apple macOS
 Not tested.
