@@ -215,6 +215,12 @@
     left: 15px;
 }
 
+#image{
+    position:absolute;
+    top: 14px;
+    left: 15px;
+}
+
 #demo_video{
     position:absolute;
     max-width: 1600px;
