@@ -1,4 +1,6 @@
-![OpenVision](https://github.com/joshkuminski/OpenVision/blob/main/Open-Vision/static/assets/OpenVisionA.png)
+<div style="text-align: center;">
+   ![OpenVision](https://github.com/joshkuminski/OpenVision/blob/main/Open-Vision/static/assets/OpenVisionA.png)
+</div>
 
 _This repository is a work in progress_
 
