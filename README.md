@@ -11,49 +11,37 @@ This repository leverages the powerful capabilities of the [Yolov7_StrongSORT_OS
 A Turning Movement Count, is commonly used in traffic engineering to model intersections and optimize signal timing.
 
 # Instructions
+## Prerequisites for GPU
 For More detailed instructions see [OpenVision]()
-1. Install [python 3.8](https://www.python.org/downloads/release/python-380/):
+1. NVIDIA CUDA Toolkit: [CUDA(v11.3)](https://developer.nvidia.com/cuda-11.3.0-download-archive)
+2. cuDNN:[follow these instructions](https://docs.nvidia.com/deeplearning/cudnn/install-guide/index.html#install-windows)
+   - This project has only been tested with cuDNN v8.3.2 and Cuda v11.3. If you use a different version, update requirements_gpu.txt.
 
-
-
-## Before you run the tracker
-
-1. Clone the repository:
+## 1. Clone this repo
 ```bash
 git clone https://github.com/joshkuminski/OpenVision.git
 ```
+or 
+download the .zip file 
 
-2. cd into repo and clone the multiple object tracking (MOT) project:
-```bash
+## 2. Install requirements
+### Windows
+Run the 'install.cmd' file as *Administrator* located in the root directory
+   This will install the submodules for this project along with, Python 3.8.10, and Git. It will also create a virtual 
+   environment and install requirements.txt
+* If you have a supported NVIDIA GPU, also run the 'install_gpu.cmd' file. This will install requirements_gpu.txt
+### Apple macOS
+Not tested.
 
-cd OpenVision
-git clone https://github.com/joshkuminski/Yolov7_StrongSORT_OSNet.git
+## 3. Run the Web Application
+Open the file 'index.html' located in the Open-Vision directory. (Tested on Microsoft Edge, Google Chrome, and Firefox).
+Following the instructions on the Help page for directions on how to use. This will walk you through the steps to define 
+the zones in order to get Turning Movement Counts.
 
-```
-
-3. cd into the MOT repo and clone the yolov7 project:
-```bash
-
-cd Yolov7_StrongSORT_OSNet
-git clone https://github.com/joshkuminski/yolov7.git
-
-```
-
-4. clone the ReID project:
-```bash
-cd strong_sort\deep\reid
-git clone https://github.com/joshkuminski/deep-person-reid.git
-```
-
-5. Make sure that you fulfill all the requirements: Python 3.8 or later with all [requirements.txt](requirements.txt) dependencies installed, including torch>=1.7. If you have a supported NVIDIA gpu, you need to comment out the torch install lines in requirements.txt. There are additional requirements if utilizing a gpu - [follow these instructions](https://docs.nvidia.com/deeplearning/cudnn/install-guide/index.html#install-windows). I recommend using cuDNN v8.3.2 and Cuda 11.3, if you go with something different you will need to update requirements_gpu.txt.   
-
-## Install Requirements                                                                                               
-
-### Custom Dataset
+# Custom Dataset
 Custom weight files can be created using [OpenVision-Label]()
 
-
-## Contact 
+# Contact 
 For questions please email joshuakuminski.github@gmail.com
-For bugs and feature requests please visit [GitHub Issues](https://github.com/joshkuminski/Turning_Movement_Counter_Yolov7_StrongSort_OSNet/issues).
+For bugs and feature requests please visit [GitHub Issues](https://github.com/joshkuminski/OpenVision/issues).
 
