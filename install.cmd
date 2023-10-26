@@ -17,19 +17,23 @@ if %errorlevel% == 0 (
     git --version
 )
 
+set "desired_version=3.8.10"
 rem Check if Python is already installed
 python --version >nul 2>&1
-if %errorlevel% == 0 (
-    echo Python is already installed.
-) else (
+for /f "tokens=2" %%A in ('python --version 2^>^&1') do (
+        set "installed_version=%%A"
+    )
+    rem Compare the installed version with the desired version
+    if "%installed_version%" equ "%desired_version%" (
+        echo Python %desired_version% is installed.
+    ) else (
     echo Installing Python...
     rem Install Python 3.8 using Chocolatey
-    choco install python --version 3.8 -y
+    choco install python --version 3.8.10 --side-by-side -y
     rem Check the Python version
     python --version
 )
 
-echo.
 echo Git and Python installation is complete.
 
 setlocal
@@ -62,13 +66,14 @@ cd /d "%script_dir%"
 
 endlocal
 
-
-
+rem UPGRADE PIP AND INSTALL REQUIREMENTS
 python -m venv venv
 call venv\Scripts\activate
-rem python -m pip install --upgrade pip
+python -m pip install --upgrade pip
 pip install -r requirements.txt --no-cache-dir%
+
+rem Put your videos in ./Open-Vision/video
+python %~dp0Set_Img.py
+
 timeout /t 15 /nobreak
 deactivate
-
-https://github.com/joshkuminski/OpenVision/releases/download/v1.4/yolov7-OVcustom-v1_4.pt
