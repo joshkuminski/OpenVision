@@ -1,6 +1,3 @@
-<div style="text-align: center;">
-   ![OpenVision](https://github.com/joshkuminski/OpenVision/blob/main/Open-Vision/static/assets/OpenVisionA.png)
-</div>
 <p align="center">
   <img src="https://github.com/joshkuminski/OpenVision/blob/main/Open-Vision/static/assets/OpenVisionA.png" alt="OpenVision">
 </p>
