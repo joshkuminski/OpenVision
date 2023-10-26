@@ -5,7 +5,15 @@ _This repository is a work in progress_
 # OpenVision
 Object Detection and Tracking for Traffic Counts and Analytics.
 
-This repository leverages the powerful capabilities of the [Yolov7_StrongSORT_OSNet](https://github.com/mikel-brostrom/Yolov7_StrongSORT_OSNet) framework. Included is a user-friendly web application that allows users to effortlessly define movements and count vehilcles. A simple algorithm is employed to count the vehicles in 15-minute increments, and object detection is achieved through the use of [Yolov7](https://github.com/WongKinYiu/yolov7) while tracking is achieved via [StongSORT](https://github.com/dyhBUPT/StrongSORT) which combines motion and appearance information based on [OSNet](https://github.com/KaiyangZhou/deep-person-reid). 
+This repository leverages the powerful capabilities of the [Yolov7_StrongSORT_OSNet](https://github.com/mikel-brostrom/Yolov7_StrongSORT_OSNet) 
+framework. Included in this project is an intuitive web application that enables users to effortlessly define  vehicle
+movements and conduct traffic studies. A simple algorithm is employed to count vehicles in 15-minute intervals, while 
+object detection is achieved through the use of [Yolov7](https://github.com/WongKinYiu/yolov7) and 
+tracking is implemented using [StongSORT](https://github.com/dyhBUPT/StrongSORT), a method that integrates both motion 
+and appearance information based on [OSNet](https://github.com/KaiyangZhou/deep-person-reid). As a result, this approach 
+offers increased accuracy, particularly in scenarios involving occlusions, though it does come at the expense of 
+processing time. It is advisable to employ GPU acceleration for this project due to its approximately 15-fold increase 
+in speed compared to CPU-only processing.
 
 # Background
 A Turning Movement Count, is commonly used in traffic engineering to model intersections and optimize signal timing.
