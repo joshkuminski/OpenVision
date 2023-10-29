@@ -45,7 +45,10 @@ Run the 'install.cmd' file as *Administrator* located in the root directory
 ### Apple macOS
 Not tested.
 
-## 3. Run the Web Application
+## 3. Import Video files
+Place the video files you wish to analyze in the directory ./Open-Vision/video/
+
+## 4. Run the Web Application
 Open the file 'index.html' located in the Open-Vision directory. (Tested on Microsoft Edge, Google Chrome, and Firefox).
 Following the instructions on the Help page for directions on how to use. This will walk you through the steps to define 
 the zones in order to get Turning Movement Counts.
