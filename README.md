@@ -32,7 +32,8 @@ For More detailed instructions see [NVIDIA Docs](https://docs.nvidia.com/deeplea
 ```bash
 git clone https://github.com/joshkuminski/OpenVision.git
 ```
-or \n
+or
+
 download the .zip file 
 
 ## 2. Install requirements
