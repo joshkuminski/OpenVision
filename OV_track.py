@@ -173,6 +173,7 @@ def run(
     if not colab:
         get_last_n_files(downloads_folder, extension)
     else:
+        project = project.split('/')[-1].split('.')[0]
         folder = './Open-Vision/data/{}'.format(project)
         get_last_n_files(folder, extension, is_colab=True)
 
