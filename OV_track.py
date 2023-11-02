@@ -110,6 +110,8 @@ def run(
     v_count = 0
     for _ in v_counts:
         s_f = './Output_Data/Output_{}.txt'.format(v_counts[v_count])
+        if colab:
+            project = project.split('/')[-1].split('.')[0]
         destination_folder = './{}/{}/'.format(project, name)
         shutil.copy2(s_f, destination_folder)
         v_count += 1
@@ -173,7 +175,6 @@ def run(
     if not colab:
         get_last_n_files(downloads_folder, extension)
     else:
-        project = project.split('/')[-1].split('.')[0]
         folder = './Open-Vision/data/{}'.format(project)
         get_last_n_files(folder, extension, is_colab=True)
 
