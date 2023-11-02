@@ -82,7 +82,8 @@ def run(
         start_time=1600,
         colab=False,
 ):
-
+    if colab:
+        project = project.split('/')[-1].split('.')[0]
     source = str(source)
     save_img = not nosave and not source.endswith('.txt')  # save inference images
     is_file = Path(source).suffix[1:] in (VID_FORMATS)
@@ -110,8 +111,6 @@ def run(
     v_count = 0
     for _ in v_counts:
         s_f = './Output_Data/Output_{}.txt'.format(v_counts[v_count])
-        if colab:
-            project = project.split('/')[-1].split('.')[0]
         destination_folder = './{}/{}/'.format(project, name)
         shutil.copy2(s_f, destination_folder)
         v_count += 1
