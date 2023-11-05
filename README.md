@@ -32,8 +32,7 @@ For More detailed instructions see [NVIDIA Docs](https://docs.nvidia.com/deeplea
 ```bash
 git clone https://github.com/joshkuminski/OpenVision.git
 ```
-or
-
+or                                                                                                                                    
 download the .zip file 
 
 ## 2. Install requirements
@@ -45,13 +44,21 @@ Run the 'install.cmd' file as *Administrator* located in the root directory
 ### Apple macOS
 Not tested.
 
-## 3. Import Video files
-Place the video files you wish to analyze in the directory ./Open-Vision/video/
+## 3. Load Video Files
+### Local
+If you are going to run the tracker on your local machine, place the video files you wish to analyze in the directory 
+./Open-Vision/video.
+### Cloud
+If you wish to run the tracker on a cloud GPU using Google Colab, upload the video files to your Google Drive in a 
+directory called Open-Vision/video.
 
 ## 4. Run the Web Application
 Open the file 'index.html' located in the Open-Vision directory. (Tested on Microsoft Edge, Google Chrome, and Firefox).
 Following the instructions on the Help page for directions on how to use. This will walk you through the steps to define 
 the zones in order to get Turning Movement Counts.
+
+## 5. Run the Tracker
+You can either run the tracker on your local machine following the steps from XXX or you can run it on Google Colab.
 
 # Custom Dataset
 Custom weight files can be created using [OpenVision-Label]()
