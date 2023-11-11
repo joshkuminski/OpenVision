@@ -37,7 +37,8 @@ download the .zip file
 
 ## 2. Install requirements
 ### Windows
-***If you do not ave a gpu and want to run this in the cloud skip down to step 3 - Cloud.***
+****If you do not ave a gpu and want to run this in the cloud skip down to step 3 - Cloud.****
+
 Run the 'install.cmd' file as *Administrator* located in the root directory
    This will install the submodules for this project along with, Python 3.8.10, and Git. It will also create a virtual 
    environment and install project requirements.txt
