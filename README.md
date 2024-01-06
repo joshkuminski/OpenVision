@@ -38,7 +38,7 @@ download the .zip file
 ## 2. Install requirements
 ### Windows
 ****If you do not have a gpu and want to run this in the cloud skip down to Step 3 - Cloud.****
-This utilizes Google Colaboratory- an online platform for *free* access to gpu's
+This utilizes Google Colaboratory- an online platform for *free* access to a gpu
 
 Run the 'install.cmd' file as *Administrator* located in the root directory
    This will install the submodules for this project along with, Python 3.8.10, and Git. It will also create a virtual 
@@ -61,8 +61,9 @@ Following the instructions on the Help page for directions on how to use. This w
 the zones in order to get Turning Movement Counts.
 
 ## 5. Run the Tracker
-You can either run the tracker on your local machine following the steps from XXX or you can run it on Google Colab.
-
+Run the 'OV-track.bat' file as *Administrator* located in the root directory
+  This will run the tracker.
+  
 # Custom Dataset
 Custom weight files can be created using [OpenVision-Label]()
 
