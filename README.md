@@ -7,7 +7,7 @@
 <img src="./Open-Vision/static/assets/Screenshot_App.png" width="400"/> <img src="./Open-Vision/static/assets/OpenVision.gif" width="400"/> 
 </p>
 <br>  
-<a href="https://colab.research.google.com/drive/101f0PNBPx3245Hu710QAf2LXpf3E2uIk?usp=sharing"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"></a>
+<a href=""><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"></a>
 </div>
 
 </div>
