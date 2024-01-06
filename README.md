@@ -4,7 +4,7 @@
 
 <div align="center">
 <p>
-<img src="./Open-Vision/static/assets/Screenshot_App.png" width="400"/> <img src="MOT16_eval/track_all.gif" width="400"/> 
+<img src="./Open-Vision/static/assets/Screenshot_App.png" width="400"/> <img src="./Open-Vision/static/assets/OpenVision.gif" width="400"/> 
 </p>
 <br>  
 <a href="https://colab.research.google.com/drive/101f0PNBPx3245Hu710QAf2LXpf3E2uIk?usp=sharing"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"></a>
@@ -14,6 +14,7 @@
 
 
 _This repository is a work in progress_
+OpenVision is the Framwork for processing video from the [OpenVision Traffic Camera](https://github.com/joshkuminski/OpenVision-Traffic-Camera) module.
 
 # OpenVision
 Object Detection and Tracking for Traffic Counts and Analytics.
