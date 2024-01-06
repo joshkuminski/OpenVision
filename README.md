@@ -14,7 +14,8 @@
 
 
 _This repository is a work in progress_
-OpenVision is the Framwork for processing video from the [OpenVision Traffic Camera](https://github.com/joshkuminski/OpenVision-Traffic-Camera) module.
+
+OpenVision is the Framework for processing video from the [OpenVision Traffic Camera](https://github.com/joshkuminski/OpenVision-Traffic-Camera) module.
 
 # OpenVision
 Object Detection and Tracking for Traffic Counts and Analytics.
