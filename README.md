@@ -65,7 +65,9 @@ Not tested.
 ## 3. Load Video Files
 ### Local
 If you are going to run the tracker on your local machine, place the video files you wish to analyze in the directory 
-./Open-Vision/video.
+./Open-Vision/video. Then run the 'Set_Img.bat' file as *Administrator* located in the root directory. This will create an image 
+for the video you uploaded in case the video dosen't want to load during zone definition process.
+
 ### Cloud
 If you wish to run the tracker on a cloud GPU using Google Colab, upload the video files to your Google Drive in a 
 directory called Open-Vision/video.
