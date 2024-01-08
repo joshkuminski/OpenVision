@@ -51,8 +51,8 @@ VID_FORMATS = 'asf', 'avi', 'gif', 'm4v', 'mkv', 'mov', 'mp4', 'mpeg', 'mpg', 't
 @torch.no_grad()
 def run(
         source='0',
-        yolo_weights=WEIGHTS / 'yolov7.pt',  # model.pt path(s),
-        strong_sort_weights=WEIGHTS / 'osnet_x0_75_market1501.pt',  # model.pt path,
+        yolo_weights=WEIGHTS / 'yolov7-OVcustom-v1_4.pt',  # model.pt path(s),
+        strong_sort_weights=WEIGHTS / 'osnet_x1_0_market1501.pt',  # model.pt path,
         config_strongsort=ROOT / 'Yolov7_StrongSORT_OSNet/strong_sort/configs/strong_sort.yaml',
         imgsz=(640, 640),  # inference size (height, width)
         conf_thres=0.25,  # confidence threshold
@@ -449,8 +449,8 @@ def run(
 
 def parse_opt():
     parser = argparse.ArgumentParser()
-    parser.add_argument('--yolo-weights', nargs='+', type=str, default=WEIGHTS / 'yolov7.pt', help='model.pt path(s)')
-    parser.add_argument('--strong-sort-weights', type=str, default=WEIGHTS / 'osnet_x0_75_market1501.pt')
+    parser.add_argument('--yolo-weights', nargs='+', type=str, default=WEIGHTS / 'yolov7-OVcustom-v1_4.pt', help='model.pt path(s)')
+    parser.add_argument('--strong-sort-weights', type=str, default=WEIGHTS / 'osnet_x1_0_market1501.pt')
     parser.add_argument('--config-strongsort', type=str,
                         default='Yolov7_StrongSORT_OSNet/strong_sort/configs/strong_sort.yaml')
     parser.add_argument('--source', type=str, default='0', help='file/dir/URL/glob, 0 for webcam')
