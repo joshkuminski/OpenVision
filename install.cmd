@@ -20,18 +20,24 @@ if %errorlevel% == 0 (
 set "desired_version=3.8.10"
 rem Check if Python is already installed
 python --version >nul 2>&1
-for /f "tokens=2" %%A in ('python --version 2^>^&1') do (
-        set "installed_version=%%A"
-    )
+if %errorlevel% == 0 (
+    echo python already installed.
+    echo Upgrading Python...
+    choco upgrade python --version "%desired_version%" -y
+) else (
+    for /f "tokens=2" %%A in ('python --version 2^>^&1') do (
+            set "installed_version=%%A"
+        )
     rem Compare the installed version with the desired version
     if "%installed_version%" equ "%desired_version%" (
         echo Python %desired_version% is installed.
     ) else (
-    echo Installing Python...
-    rem Install Python 3.8 using Chocolatey
-    choco install python --version 3.8.10 --side-by-side -y
-    rem Check the Python version
-    python --version
+        echo Installing Python...
+        rem Install Python 3.8 using Chocolatey
+        choco install python --version "%desired_version%" --side-by-side -y
+        rem Check the Python version
+        python --version
+    )
 )
 
 echo Git and Python installation is complete.
@@ -73,7 +79,7 @@ python -m pip install --upgrade pip
 pip install -r requirements.txt --no-cache-dir%
 
 rem Put your videos in ./Open-Vision/video
-python %~dp0Set_Img.py
+rem python %~dp0Set_Img.py
 
 timeout /t 15 /nobreak
 deactivate
