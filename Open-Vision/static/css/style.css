@@ -225,28 +225,61 @@
     position:absolute;
     max-width: 1600px;
     max-height: 800px;
-    margin: 20px;
+    margin: 5px;
     border: 10px solid  rgb(58, 143, 127) ;
     border-radius: 5px;
 }
 
 #help_text{
-    margin: 10px;
+    top: 20px;
+    margin: 5px;
     color: white;
+    font-size: 30px;
+}
+#help2_text{
+    top: 20px;
+    margin: -5px;
+    color: rgb(58, 143, 127) ;
+    font-weight: bold;
+    font-size: 40px;
 }
 
 #Ins_text{
     margin: 10px;
     color: white;
     position: relative;
-    top: 45px;
-    left: 1520px;
+    top: -40px;
+    left: 1500px;
 }
 
 #bullet_text{
     margin: 10px;
     color: white;
     position: relative;
-    top: 50px;
-    left: 1350px;
+    top: -35px;
+    left: 1320px;
+}
+
+#background_image{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0.4;
+}
+
+#LandingText{
+    position: relative;
+    margin: 10px;
+    color: white;
+    left: 50%;
+    transform: translate(-50%);
+}
+
+.ld_grid {
+  box-sizing: border-box;
+  display: grid;
+  grid-template-columns: auto auto;
+  margin:  5px;
+  align-items: left;
 }
