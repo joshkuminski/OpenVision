@@ -183,6 +183,17 @@ function  SaveData(id){
     // Create a new Date object
     const now = new Date();
 
+    // Display a prompt dialog for user input
+    const userInput_project = window.prompt("Please enter a Project Name: \ni.e. Location");
+    const userInput_run = window.prompt("Please enter a Run Name: \ni.e. start time of recording or date");
+    // Check if the user clicked "OK" and entered a value
+    if (userInput_project.length != 0 && userInput_run.length != 0) {
+        alert("Project Name: " + userInput_project + "\nRun Name: " + userInput_run);
+    } else {
+        alert("No input provided.");
+        return;
+    }
+
     // Get the current time
     const hours = now.getHours(); // 0-23
     const minutes = now.getMinutes(); // 0-59
@@ -196,11 +207,13 @@ function  SaveData(id){
     let name = "Zone_Data";
     CreateDownload(current_time, data, name);
 
+    //alert("<-- Click Allow Multiple Downloads");
+
     data = color_list_save;
     name = "Color_Data";
     CreateDownload(current_time, data, name);
 
-    data = window.fileName;
+    data = [window.fileName, userInput_project, userInput_run];
     name = "Filename";
     CreateDownload(current_time, data, name);
 
