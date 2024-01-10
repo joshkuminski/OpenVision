@@ -148,7 +148,7 @@ def run(
                 dest_folder = './Open-Vision/data/{}/'.format(project)
                 new_file = dest_folder + file.split('/')[-1]
                 shutil.copy2(file, dest_folder)
-                #os.remove(file)  # remove files from download folder
+                os.remove(file)  # remove files from download folder
                 # LOAD THE WEB APP DATA
                 with open('{}'.format(new_file), 'r') as f:
                     split_file = new_file.split('/')[-1]
@@ -167,15 +167,16 @@ def run(
 
     frame_data = [[[]]]
 
-    downloads_folder = os.path.expanduser("~") + "/Downloads"
+    #downloads_folder = os.path.expanduser("~") + "/Downloads"
+    folder = "./Input_Data"
+    #folder = './Open-Vision/data/{}'.format(project)
     os.makedirs('./Open-Vision/data/{}/'.format(project), exist_ok=True)
     extension = '.json'
 
-    if not colab:
-        get_last_n_files(downloads_folder, extension)
-    else:
-        folder = './Open-Vision/data/{}'.format(project)
-        get_last_n_files(folder, extension, is_colab=True)
+    #if not colab:
+    get_last_n_files(folder, extension, colab)
+    #else:
+        #get_last_n_files(folder, extension, is_colab=True)
 
     if save_txt:
         image_path = './{}/{}/images'.format(project, name)
