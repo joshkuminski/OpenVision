@@ -2,7 +2,7 @@ call %~dp0\venv\Scripts\activate
 @echo off
 setlocal
 
-REM Check if the nvidia-smi command is available
+REM Check if the nvidia-smi command is availablea
 where nvidia-smi >nul 2>nul
 if %errorlevel% equ 0 (
     echo GPU is available.
@@ -23,10 +23,11 @@ if %errorlevel% equ 0 (
 
 endlocal
 
+rem move the downloaded file to dir ./InputFiles
 python %~dp0SetProject.py
-set /p FileName=<./Input_Data/Filename.json
-set /p ProjectName=<./Input_Data/Projectname.json
+set /p RunName=<./Input_Data/RunName.txt
+set /p ProjectName=<./Input_Data/ProjectName.txt
 
-python %~dp0OV_track.py --source ./Open-Vision/video/EXAMPLE.mp4 --device "%device%" --project "%ProjectName%"--name "%FileName%" --save-vid --strong-sort-weights ./weights/osnet_x1_0_market1501.pt --yolo-weights ./weights/yolov7-OVcustom-v1_4.pt --classes 0 1 2 5
+python %~dp0OV_track.py --source ./Open-Vision/video/EXAMPLE.mp4 --device "%device%" --project "%ProjectName%"--name "%RunName%" --save-vid --strong-sort-weights ./weights/osnet_x1_0_market1501.pt --yolo-weights ./weights/yolov7-OVcustom-v1_4.pt --classes 0 1 2 5
 timeout /T 15
 deactivate
