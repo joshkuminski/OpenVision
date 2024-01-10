@@ -28,6 +28,6 @@ python %~dp0SetProject.py
 set /p RunName=<./Input_Data/RunName.txt
 set /p ProjectName=<./Input_Data/ProjectName.txt
 
-python %~dp0OV_track.py --source ./Open-Vision/video/EXAMPLE.mp4 --device "%device%" --project "%ProjectName%"--name "%RunName%" --save-vid --strong-sort-weights ./weights/osnet_x1_0_market1501.pt --yolo-weights ./weights/yolov7-OVcustom-v1_4.pt --classes 0 1 2 5
+python %~dp0OV_track.py --source ./Open-Vision/video/EXAMPLE.mp4 --device "%device%" --project "%ProjectName%" --name "%RunName%" --save-vid --strong-sort-weights ./weights/osnet_x1_0_market1501.pt --yolo-weights ./weights/yolov7-OVcustom-v1_4.pt --classes 0 1 2 5
 timeout /T 15
 deactivate
