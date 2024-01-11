@@ -30,7 +30,7 @@ object detection is achieved through the use of [Yolov7](https://github.com/Wong
 tracking is implemented using [StongSORT](https://github.com/dyhBUPT/StrongSORT), a method that integrates both motion 
 and appearance information based on [OSNet](https://github.com/KaiyangZhou/deep-person-reid). As a result, this approach 
 offers increased accuracy, particularly in scenarios involving occlusions, though it does come at the expense of 
-processing time. It is advisable to employ GPU acceleration for this project due to its approximately 15-fold increase 
+processing time. It is advisable to employ GPU acceleration for this project due to its high increase 
 in speed compared to CPU-only processing.
 
 # Background
