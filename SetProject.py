@@ -27,6 +27,7 @@ def get_last_n_files(folder_path, extension):
                         ProjectName = Filename[1]
                         RunName = Filename[2]
                 f.close()
+
             with open('./Input_Data/ProjectName.txt', 'w') as text_file:
                 text_file.write(ProjectName)
             text_file.close()
@@ -57,10 +58,19 @@ if __name__ == "__main__":
     File_path = open_file_dialog()
     VideoName = File_path.split('/')[-1]
     print(VideoName)
+    TimeFrame = VideoName.split("_")[-1]
+    SelectedTime = str(TimeFrame.split('-')[0]) + str(TimeFrame.split('-')[1])
+    if int(TimeFrame.split('-')[1]) == 59:
+        SelectedTime = (int(TimeFrame.split('-')[0]) + 1) * 100
+    if int(TimeFrame.split('-')[1]) == 29:
+        SelectedTime = str(TimeFrame.split('-')[0]) + '30'
     with open('./Input_Data/FileName.txt', 'w') as f:
         f.write(VideoName)
     f.close()
-
+    with open('./Input_Data/RunName.txt', 'w') as f:
+        f.write(str(SelectedTime))
+    f.close()
+    
     downloads_folder = os.path.expanduser("~") + "/Downloads"
     extension = '.json'
     get_last_n_files(downloads_folder, extension)
