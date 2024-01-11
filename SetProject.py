@@ -4,10 +4,6 @@ import json
 import tkinter as tk
 from tkinter import filedialog
 
-# When the tracking is completed move these files to a folder with the Project Name.
-# When the same Project is run with a different RunName then check if this folder exists, if not then run this file.
-
-
 # GET THE FILES FROM DOWNLOAD FOLDER AND PLACE IN /InputFiles
 def get_last_n_files(folder_path, extension):
     # Get a list of files in the folder sorted by modification time
@@ -31,8 +27,6 @@ def get_last_n_files(folder_path, extension):
                         ProjectName = Filename[1]
                         RunName = Filename[2]
                 f.close()
-
-            #os.makedirs('./Open-Vision/data/{}/'.format(ProjectName), exist_ok=True)
             with open('./Input_Data/ProjectName.txt', 'w') as text_file:
                 text_file.write(ProjectName)
             text_file.close()
