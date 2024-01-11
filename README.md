@@ -59,7 +59,7 @@ This utilizes Google Colaboratory- an online platform for *free* access to a gpu
 Run the 'install.bat' file as *Administrator* located in the root directory
    This will install the submodules for this project along with, Python 3.8.10, and Git. It will also create a virtual 
    environment and install project requirements.txt
-* If you have a supported NVIDIA GPU, also run the 'install_gpu.cmd' file. This will install requirements_gpu.txt
+* If you have a supported NVIDIA GPU, also run the 'install_gpu.bat' file. This will install requirements_gpu.txt
 ### Apple macOS
 Not tested.
 
