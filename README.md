@@ -56,7 +56,7 @@ download the .zip file
 ****If you do not have a gpu and want to run this in the cloud skip down to Step 3 - Cloud.****
 This utilizes Google Colaboratory- an online platform for *free* access to a gpu
 
-Run the 'install.cmd' file as *Administrator* located in the root directory
+Run the 'install.bat' file as *Administrator* located in the root directory
    This will install the submodules for this project along with, Python 3.8.10, and Git. It will also create a virtual 
    environment and install project requirements.txt
 * If you have a supported NVIDIA GPU, also run the 'install_gpu.cmd' file. This will install requirements_gpu.txt
@@ -80,7 +80,7 @@ the zones in order to get Turning Movement Counts.
 
 ## 5. Run the Tracker
 Run the 'OV-track.bat' file as *Administrator* located in the root directory
-  This will run the tracker.
+  This will run the tracker. Select the video you wish to process when the file dialog appears. Make sure the Video Filename is formatted correctly (Output_YYYY-MM-DD_HH-MM-SS.mp4)
   
 # Custom Dataset
 Custom weight files can be created using [OpenVision-Label]()
