@@ -120,7 +120,24 @@ def run(
 
     # GET THE FILES FROM DOWNLOAD FOLDER AND PLACE IN /App_local/data/project/
     def get_last_n_files(folder_path, extension, is_colab=False):
-        var_name = ['mask', 'zone_def', 'filename', 'zone_colors', 'Zones']
+
+        def set_variables(file):
+            var_name = ['mask', 'zone_def', 'filename', 'zone_colors', 'Zones']
+            split_file = file.split('/')[-1]
+            with open('{}'.format(file), 'r') as f:
+                if split_file.split('_')[0] == 'Color':
+                    globals()[var_name[3]] = json.load(f)
+                if split_file.split('_')[0] == 'Filename':
+                    globals()[var_name[2]] = json.load(f)
+                if split_file.split('_')[0] == 'Mask':
+                    globals()[var_name[0]] = json.load(f)
+                if split_file.split('_')[0] == 'Zone':
+                    if split_file.split('_')[1] == 'Data':
+                        globals()[var_name[4]] = json.load(f)
+                    else:
+                        globals()[var_name[1]] = json.load(f)
+            f.close()
+
         # Get a list of files in the folder sorted by modification time
         files = sorted(
             [f for f in os.listdir(folder_path) if f.endswith(extension)],
@@ -129,54 +146,28 @@ def run(
         )
         if is_colab:
             for file in files:
-                with open('{}'.format(file), 'r') as f:
-                    if file.split('_')[0] == 'Color':
-                        globals()[var_name[3]] = json.load(f)
-                    if file.split('_')[0] == 'Filename':
-                        globals()[var_name[2]] = json.load(f)
-                    if file.split('_')[0] == 'Mask':
-                        globals()[var_name[0]] = json.load(f)
-                    if file.split('_')[0] == 'Zone':
-                        if file.split('_')[1] == 'Data':
-                            globals()[var_name[4]] = json.load(f)
-                        else:
-                            globals()[var_name[1]] = json.load(f)
-                f.close()
+                set_variables(folder_path + file)
         else:
             for file in files:
                 file = folder_path + '/' + file
                 dest_folder = './Open-Vision/data/{}/'.format(project)
                 new_file = dest_folder + file.split('/')[-1]
                 shutil.copy2(file, dest_folder)
-                os.remove(file)  # remove files from download folder
+                os.remove(file)  # remove files from Input_Data folder
                 # LOAD THE WEB APP DATA
-                with open('{}'.format(new_file), 'r') as f:
-                    split_file = new_file.split('/')[-1]
-                    if split_file.split('_')[0] == 'Color':
-                        globals()[var_name[3]] = json.load(f)
-                    if split_file.split('_')[0] == 'Filename':
-                        globals()[var_name[2]] = json.load(f)
-                    if split_file.split('_')[0] == 'Mask':
-                        globals()[var_name[0]] = json.load(f)
-                    if split_file.split('_')[0] == 'Zone':
-                        if split_file.split('_')[1] == 'Data':
-                            globals()[var_name[4]] = json.load(f)
-                        else:
-                            globals()[var_name[1]] = json.load(f)
-                f.close()
+                set_variables(new_file)
 
     frame_data = [[[]]]
 
-    #downloads_folder = os.path.expanduser("~") + "/Downloads"
-    folder = "./Input_Data"
-    #folder = './Open-Vision/data/{}'.format(project)
     os.makedirs('./Open-Vision/data/{}/'.format(project), exist_ok=True)
     extension = '.json'
-
-    #if not colab:
-    get_last_n_files(folder, extension, colab)
-    #else:
-        #get_last_n_files(folder, extension, is_colab=True)
+    # If Input_Data has no .json files then there should be an existing project
+    if not [f for f in os.listdir('./Input_Data') if f.endswith(extension)]:
+        folder = './Open-Vision/data/{}/'.format(project)
+        get_last_n_files(folder, extension, is_colab=True)  # Force colab = True
+    else:
+        folder = "./Input_Data"
+        get_last_n_files(folder, extension, colab)
 
     if save_txt:
         image_path = './{}/{}/images'.format(project, name)
