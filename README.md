@@ -9,7 +9,7 @@
 <br>  
 <div>---------------- OpenVision Web Application ------------------------------------ Tracker Output ------------------ </div>
 <br>  
-<a href="https://colab.research.google.com/drive/1cO_PB-0fAVhQgy15IrIS3r89hfyTIUUd](https://drive.google.com/file/d/1cO_PB-0fAVhQgy15IrIS3r89hfyTIUUd/view?usp=sharing"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"></a>
+<a href="https://drive.google.com/file/d/1cO_PB-0fAVhQgy15IrIS3r89hfyTIUUd/view?usp=sharing"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"></a>
   
 </div>
 
