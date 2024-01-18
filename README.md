@@ -16,7 +16,6 @@
 </div>
 
 
-_This repository is a work in progress_
 
 OpenVision is the Framework for processing video from the [OpenVision Traffic Camera](https://github.com/joshkuminski/OpenVision-Traffic-Camera) module.
 With the OpenVision Camera this project can achieve 95%+ accuracy.
