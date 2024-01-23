@@ -39,6 +39,7 @@ A Turning Movement Count, is commonly used in traffic engineering to model inter
 # Instructions
 ## Prerequisites for GPU
 For More detailed instructions see [NVIDIA Docs](https://docs.nvidia.com/deeplearning/cudnn/install-guide/index.html#install-windows)
+[Supported NVIDIA GPUs](https://developer.nvidia.com/cuda-gpus)
 1. NVIDIA CUDA Toolkit: [CUDA(v11.3)](https://developer.nvidia.com/cuda-11.3.0-download-archive)
 2. NVIDIA Graphic Driver for your GPU.[NVIDIA Drivers](https://www.nvidia.com/Download/index.aspx?lang=en-us)
 3. cuDNN:[cuDNN](https://developer.nvidia.com/cudnn), Need to be registered for the NVIDIA Developer Program.
