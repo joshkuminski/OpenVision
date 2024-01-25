@@ -21,7 +21,7 @@ OpenVision is the Framework for processing video from the [OpenVision Traffic Ca
 With the OpenVision Camera this project can achieve 95%+ accuracy.
 
 # OpenVision
-Object Detection and Tracking for Traffic Counts and Analytics.
+Vehicle Detection and Tracking for Traffic Counts and Analytics.
 
 This repository leverages the powerful capabilities of the [Yolov7_StrongSORT_OSNet](https://github.com/mikel-brostrom/Yolov7_StrongSORT_OSNet) 
 framework. Included in this project is an intuitive web application that enables users to effortlessly define  vehicle
