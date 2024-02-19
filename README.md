@@ -62,7 +62,9 @@ download the .zip file
 ****If you do not have hardware acceleration (GPU) and want to run this in the cloud skip down to Step 3 - Cloud.****
 This utilizes Google Colaboratory- an online platform for **free* access to a gpu
 * The **free* tier has many limitations. To actaully use this it is recommended to purchase the Pay As You Go plan and upgrade when necessary.
-
+Run the 'install_colab.bat' file as *Administrator* located in the root directory
+   This will install Python 3.8.10, create a virtual environment and install project requirements_colab.txt
+  
 Run the 'install.bat' file as *Administrator* located in the root directory
    This will install the submodules for this project along with, Python 3.8.10, and Git. It will also create a virtual 
    environment and install project requirements.txt
