@@ -86,7 +86,7 @@ Run the 'OV-track.bat' file as *Administrator* located in the root directory
   This will run the tracker. Select the video you wish to process when the file dialog appears. Make sure the Video Filename is formatted correctly (Output_YYYY-MM-DD_HH-MM-SS.mp4)
   
 # Custom Dataset
-Custom weight files can be created using [OpenVision-Label]()
+Custom weight files can be created using [OpenVision-Label]() (Coming Soon)
 
 # Contact 
 For questions please email joshuakuminski.github@gmail.com
