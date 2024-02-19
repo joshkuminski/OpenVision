@@ -346,7 +346,7 @@ def run(
                             interval += 1
                             r, missed_Count = tmc_class.create_bin(interval, start_time=start_time,
                                                                     frame_data=frame_data, rtor=False,
-                                                                    project=project, name=name)
+                                                                    project=project, name=name, colab=True)
                             if frame_num == nframes:
                                 # Print results
                                 t = tuple(x / seen * 1E3 for x in dt)  # speeds per image
