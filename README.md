@@ -50,14 +50,14 @@ For More detailed instructions see [NVIDIA Docs](https://docs.nvidia.com/deeplea
 ```bash
 git clone https://github.com/joshkuminski/OpenVision.git
 ```
-or                                                                                                                                    
+OR (recommended)                                                                                                                                 
 download the .zip file 
 
 ## 2. Install requirements
 ### Windows 10
 ****If you do not have hardware acceleration (GPU) and want to run this in the cloud skip down to Step 3 - Cloud.****
 This utilizes Google Colaboratory- an online platform for **free* access to a gpu
-* The **free* tier has many limitations. To actaully use this it is reccommended to purchase the Pay As You Go plan and upgrade when necessary.
+* The **free* tier has many limitations. To actaully use this it is recommended to purchase the Pay As You Go plan and upgrade when necessary.
 
 Run the 'install.bat' file as *Administrator* located in the root directory
    This will install the submodules for this project along with, Python 3.8.10, and Git. It will also create a virtual 
