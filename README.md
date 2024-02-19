@@ -82,7 +82,7 @@ If you wish to run the tracker on a cloud GPU using Google Colab, upload the vid
 directory called Open-Vision/video as well as the local directory described above.
 This method is best for anyone that does not have acceleration hardware and costs ~$0.80 per hour of video using their pay as you go tier.
 
-  * Then run the 'Set_Img.bat' file as *Administrator* located in the root directory. This will create an image 
+  * Then run the 'Set_Img.bat' file located in the root directory. This will create an image 
   for each video you placed in ./Open-Vision/video in case the video dosen't want to load during the zone definition process.
 
 
