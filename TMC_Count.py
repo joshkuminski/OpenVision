@@ -100,19 +100,30 @@ class TmcCounter:
 
         return img1
 
-    def create_bin(self, interval, start_time, frame_data, rtor, project, name):
+    def create_bin(self, interval, start_time, frame_data, rtor, project, name, colab=False):
         # Sort the dat before passing to TMC_classification
         self.data_zones.sort(key=lambda p: p[0])  # sort only by first element in list
         self.data.sort(key=lambda p: p[0])  # sort only by first element in list
         self.data = self.data[1:]  # first element is blank - remove it
-        with open("./{}/{}/data/data_zones_{}.pkl".format(project, name, interval), "wb") as file:
-            pickle.dump(self.data_zones, file)
-        with open("./{}/{}/data/data_{}.pkl".format(project, name, interval), "wb") as file:
-            pickle.dump(self.data, file)
-        # with open("data_zones_ray_intersect.pkl", "wb") as file:
-        #     pickle.dump(self.data_zones_ray_intersect, file)
-        with open("./{}/{}/data/frame_{}.pkl".format(project, name, interval), "wb") as file:
-            pickle.dump(frame_data, file)
+
+        if colab:
+            with open("{}/{}/data/data_zones_{}.pkl".format(project, name, interval), "wb") as file:
+                pickle.dump(self.data_zones, file)
+            with open("{}/{}/data/data_{}.pkl".format(project, name, interval), "wb") as file:
+                pickle.dump(self.data, file)
+            # with open("data_zones_ray_intersect.pkl", "wb") as file:
+            #     pickle.dump(self.data_zones_ray_intersect, file)
+            with open("{}/{}/data/frame_{}.pkl".format(project, name, interval), "wb") as file:
+                pickle.dump(frame_data, file)
+        else:
+            with open("./{}/{}/data/data_zones_{}.pkl".format(project, name, interval), "wb") as file:
+                pickle.dump(self.data_zones, file)
+            with open("./{}/{}/data/data_{}.pkl".format(project, name, interval), "wb") as file:
+                pickle.dump(self.data, file)
+            # with open("data_zones_ray_intersect.pkl", "wb") as file:
+            #     pickle.dump(self.data_zones_ray_intersect, file)
+            with open("./{}/{}/data/frame_{}.pkl".format(project, name, interval), "wb") as file:
+                pickle.dump(frame_data, file)
 
         # COUNT THE TURN MOVEMENTS
         pro_raw_data = self.data.copy()
@@ -126,13 +137,17 @@ class TmcCounter:
                                         ids_delete=ProcessedData.pot_ids_delete,
                                         ids_delete_2=ProcessedData.pot_ids_delete_2,
                                         ids_last_frame=ProcessedData.ids_last_frame, rtor=False, project=project,
-                                        name=name, start_time=start_time)
+                                        name=name, start_time=start_time, colab=colab)
         TMC_Counter.TMC_count()
 
         x = interval * 15
 
-        with open("./{}/{}/data/Zones_{}.pkl".format(project, name, x), "wb") as file:
-            pickle.dump(self.data_zones, file)
+        if colab:
+            with open("{}/{}/data/Zones_{}.pkl".format(project, name, x), "wb") as file:
+                pickle.dump(self.data_zones, file)
+        else:
+            with open("./{}/{}/data/Zones_{}.pkl".format(project, name, x), "wb") as file:
+                pickle.dump(self.data_zones, file)
 
         del TMC_Counter.processed_raw_data
         del TMC_Counter.processed_zone_detections
