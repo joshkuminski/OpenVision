@@ -115,7 +115,7 @@ def run(
         v_count += 1
 
     # Make a directory for ?
-    data_path = str(project) + '/{}/data'.format(project, name)
+    data_path = str(project) + '/{}/data'.format(name)
     os.makedirs(data_path, exist_ok=True)
 
     # GET THE FILES FROM DOWNLOAD FOLDER AND PLACE IN /App_local/data/project/
