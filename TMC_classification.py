@@ -8,7 +8,8 @@ import matplotlib.pyplot as plt
 
 class TmcClassification:
     def __init__(self, processed_raw_data, processed_zone_detections, num_values, zone_def, ids_delete=[],
-                 ids_delete_2=[], ids_last_frame=[], interval=1, rtor=False, project=None, name=None, start_time=1600):
+                 ids_delete_2=[], ids_last_frame=[], interval=1, rtor=False, project=None, name=None, start_time=1600,
+                 colab=False):
         self.processed_raw_data = processed_raw_data
         self.processed_zone_detections = processed_zone_detections
         self.num_values = num_values
@@ -25,11 +26,9 @@ class TmcClassification:
         self.start_time = start_time
         self.rtor = rtor
         self.active_leg = 0
-        #self.NN_data_XY_train = []
-        #self.NN_data_class_train = np.array(1)
-        #self.NN_data_XY_test = []
         self.project = project
         self.name = name
+        self.colab = colab
 
     def TMC_count(self):
         movement = [0] * 4
@@ -134,37 +133,17 @@ class TmcClassification:
                     break
                 i += 4
                 j += 1
-        #plt.show()
-        # SAVE THE DATA FOR USE LATER ON
-        #ax = plt.gca()
-        #ax.invert_yaxis()
-        #plt.savefig('Output_graph.jpg')
-        # TODO: try using a CNN to classify the misses
-        #np.reshape(self.NN_data_XY_train, (720, 1280, 2))
-        # with open("CNN_XY_train_{}.pkl".format(self.interval), "wb") as file:
-        #     pickle.dump(self.NN_data_XY_train, file)
-        # with open("CNN_class_train_{}.pkl".format(self.interval), "wb") as file:
-        #     pickle.dump(self.NN_data_class_train, file)
-        # with open("CNN_XY_test_{}.pkl".format(self.interval), "wb") as file:
-        #     pickle.dump(self.NN_data_XY_test, file)
-        # with open("CNN_class_test_{}.pkl".format(self.interval), "wb") as file:
-        #     pickle.dump(self.NN_data_class_test, file)
 
         self.Missed = self.num_values - sum(self.Count[0])
 
-        make_markdown_table(self.start_time, self.Count, self.project, self.name)
+        make_markdown_table(self.start_time, self.Count, self.project, self.name, colab=self.colab)
 
 
 def make_plot(processed_raw_data, TMC_count, clr='k', alpha=1, NN_data_XY_train=[], NN_data_class_train=[],
               NN_data_XY_test=[], j=None):
     break_loop = False
     Index = 0
-    # NN_data_flatten = [0] * 921600
-    #NN_data = [[[0, 0] for j in range(1280)] for i in range(720)]  # Create a list that is (720 x 1280 x 2)
-    #NN_data = np.array(NN_data)
-    # print(np.shape(NN_data))
     NN_data_flatten = [[0, 0]] * 921600  # (921600, 2)
-    #NN_data_flatten = [0] * 921600  # (921600,1)
     NN_data_class_flat = [0] * 16
 
     for ii in processed_raw_data:
@@ -176,10 +155,6 @@ def make_plot(processed_raw_data, TMC_count, clr='k', alpha=1, NN_data_XY_train=
         Index += 1
         if break_loop:
             break
-
-    #x_y = processed_raw_data[Index - 1]
-    #NN_data.append([x_y, j])  # [id x y 0-15]
-
     x = []
     y = []
     int_1 = []
@@ -191,19 +166,8 @@ def make_plot(processed_raw_data, TMC_count, clr='k', alpha=1, NN_data_XY_train=
         int_2.append(ii[4])
         inter = [int_1, int_2]
         one_hot = ii[1] * ii[2]
-        #NN_data_flatten[one_hot] = 1
         NN_data_flatten[one_hot] = [ii[3], ii[4]]
-        # if ii[1] >= 1280:
-        #     x = 1279
-        # else:
-        #     x = ii[1]
-        # if ii[2] >= 720:
-        #     y = 719
-        # else:
-        #     y = ii[2]
 
-        #print(y, x)
-        # NN_data[y][x] = [ii[3], ii[4]]
 
     if j:  # if a detection was made
         NN_data_class_flat[j] = 1
@@ -211,9 +175,6 @@ def make_plot(processed_raw_data, TMC_count, clr='k', alpha=1, NN_data_XY_train=
         NN_data_XY_train.append(NN_data_flatten)
     else:
         NN_data_XY_test.append(NN_data_flatten)
-    # NN_data_XY_train = np.array(NN_data_XY_train)
-
-    # plt.scatter(x, y, color=clr, alpha=alpha)
 
     return NN_data_XY_train, NN_data_class_train, NN_data_XY_test
 
@@ -458,25 +419,46 @@ def classify(Count, count_rng, EnterZone, ExitZone, zone_def, TMC_count):
     return Count
 
 
-def make_markdown_table(start_time, Count, project, name):
+def make_markdown_table(start_time, Count, project, name, colab=False):
     v_counts = ['TOTAL', 'CAR', 'TRUCK', 'BUS', 'BI']
     v_count = 0
-    for v_cls in Count:
-        with open("./{}/{}/Output_{}.txt".format(project, name, v_counts[v_count]), "r") as Output:
-            markdown_list = Output.readlines()
+    if colab:
+        for v_cls in Count:
+            with open("{}/{}/Output_{}.txt".format(project, name, v_counts[v_count]), "r") as Output:
+                markdown_list = Output.readlines()
 
-        with open('./{}/{}/Output_{}.txt'.format(project, name, v_counts[v_count]), 'w') as file:
-            for num in markdown_list:
-                file.write(str(num))
-            file.write("\n")
-            file.write("|   " + str(start_time) + "   |")
+            with open('{}/{}/Output_{}.txt'.format(project, name, v_counts[v_count]), 'w') as file:
+                for num in markdown_list:
+                    file.write(str(num))
+                file.write("\n")
+                file.write("|   " + str(start_time) + "   |")
 
-            for num in v_cls:  # check if value is 1 2 or 3 digits
-                if len(str(num)) == 1:
-                    file.write(" " + str(num) + " |")
-                if len(str(num)) == 2:
-                    file.write(str(num) + " |")
-                if len(str(num)) == 3:
-                    file.write(str(num) + "|")
-        file.close()
-        v_count += 1
+                for num in v_cls:  # check if value is 1 2 or 3 digits
+                    if len(str(num)) == 1:
+                        file.write(" " + str(num) + " |")
+                    if len(str(num)) == 2:
+                        file.write(str(num) + " |")
+                    if len(str(num)) == 3:
+                        file.write(str(num) + "|")
+            file.close()
+            v_count += 1
+    else:
+        for v_cls in Count:
+            with open("./{}/{}/Output_{}.txt".format(project, name, v_counts[v_count]), "r") as Output:
+                markdown_list = Output.readlines()
+
+            with open('./{}/{}/Output_{}.txt'.format(project, name, v_counts[v_count]), 'w') as file:
+                for num in markdown_list:
+                    file.write(str(num))
+                file.write("\n")
+                file.write("|   " + str(start_time) + "   |")
+
+                for num in v_cls:  # check if value is 1 2 or 3 digits
+                    if len(str(num)) == 1:
+                        file.write(" " + str(num) + " |")
+                    if len(str(num)) == 2:
+                        file.write(str(num) + " |")
+                    if len(str(num)) == 3:
+                        file.write(str(num) + "|")
+            file.close()
+            v_count += 1
