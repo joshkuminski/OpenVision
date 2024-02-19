@@ -158,11 +158,11 @@ def run(
 
     frame_data = [[[]]]
 
-    os.makedirs('./Open-Vision/data/{}/'.format(project), exist_ok=True)
+    os.makedirs('./Open-Vision/data/{}/'.format(project.split('/')[-1]), exist_ok=True)
     extension = '.json'
     # If Input_Data has no .json files then there should be an existing project
     if not [f for f in os.listdir('./Input_Data') if f.endswith(extension)]:
-        folder = './Open-Vision/data/{}/'.format(project)
+        folder = './Open-Vision/data/{}/'.format(project.split('/')[-1])
         get_last_n_files(folder, extension, is_colab=True)  # Force colab = True
     else:
         folder = "./Input_Data"
