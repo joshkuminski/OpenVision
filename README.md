@@ -75,13 +75,17 @@ Not tested.
 ## 3. Load Video Files
 ### Local
 If you are going to run the tracker on your local machine, place the video files you wish to analyze in the directory 
-./Open-Vision/video. Then run the 'Set_Img.bat' file as *Administrator* located in the root directory. This will create an image 
-for the video you uploaded in case the video dosen't want to load during zone definition process.
+./Open-Vision/video. 
 
 ### Cloud
 If you wish to run the tracker on a cloud GPU using Google Colab, upload the video files to your Google Drive in a 
 directory called Open-Vision/video.
 This method is best for anyone that does not have acceleration hardware and costs ~$0.80 per hour of video using their pay as you go tier.
+
+### Both
+Then run the 'Set_Img.bat' file as *Administrator* located in the root directory. This will create an image 
+for the video you uploaded in case the video dosen't want to load during zone definition process.
+
 
 ## 4. Run the Web Application
 Open the file 'index.html' located in the Open-Vision directory. (Tested on Microsoft Edge, Google Chrome, and Firefox).
