@@ -111,11 +111,17 @@ def run(
     v_count = 0
     for _ in v_counts:
         s_f = './Output_Data/Output_{}.txt'.format(v_counts[v_count])
-        destination_folder = './{}/{}/'.format(project, name)
+        if colab:
+            destination_folder = str(project) + '/{}/'.format(name)
+        else:
+            destination_folder = './{}/{}/'.format(project, name)
         shutil.copy2(s_f, destination_folder)
         v_count += 1
-
-    data_path = './{}/{}/data'.format(project, name)
+        
+    if colab:
+        data_path = str(project) + '/{}/data'.format(project, name)
+    else:
+        data_path = './{}/{}/data'.format(project, name)
     os.makedirs(data_path, exist_ok=True)
 
     # GET THE FILES FROM DOWNLOAD FOLDER AND PLACE IN /App_local/data/project/
