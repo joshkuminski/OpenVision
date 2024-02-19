@@ -1,11 +1,13 @@
 import cv2
 import os
 
+current_directory = os.getcwd()
+
 # Specify the folder containing video files
-video_folder = "./Open-Vision/video"
+video_folder = current_directory + "/Open-Vision/video"
 
 # Create a folder to save the images
-output_folder = "./Open-Vision/static/img"
+output_folder = current_directory + "/Open-Vision/static/img"
 
 # List all video files in the specified folder
 video_files = [f for f in os.listdir(video_folder) if f.endswith((".mp4", ".avi"))]
