@@ -36,6 +36,9 @@ in speed compared to CPU-only processing.
 # Background
 A Turning Movement Count, is commonly used in traffic engineering to model intersections and optimize signal timing.
 
+# Project Goal
+The goal of this project is to empoweer Traffic Engineers and reduce the barriers to entry into the object detection and tracking utilizing machine learing techniques.
+
 # Instructions
 ## Prerequisites for GPU
 For More detailed instructions see [NVIDIA Docs](https://docs.nvidia.com/deeplearning/cudnn/install-guide/index.html#install-windows)
