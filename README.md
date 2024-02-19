@@ -56,7 +56,8 @@ download the .zip file
 ## 2. Install requirements
 ### Windows
 ****If you do not have a gpu and want to run this in the cloud skip down to Step 3 - Cloud.****
-This utilizes Google Colaboratory- an online platform for *free* access to a gpu
+This utilizes Google Colaboratory- an online platform for **free* access to a gpu
+* The free tier has many limitations, to actaully use this it is recoommend to purchase the Pay As You Go plan and upgrade when necessary. Depending on 
 
 Run the 'install.bat' file as *Administrator* located in the root directory
    This will install the submodules for this project along with, Python 3.8.10, and Git. It will also create a virtual 
