@@ -74,7 +74,7 @@ for the video you uploaded in case the video dosen't want to load during zone de
 ### Cloud
 If you wish to run the tracker on a cloud GPU using Google Colab, upload the video files to your Google Drive in a 
 directory called Open-Vision/video.
-This method is best for anyone that does not have acceleration hardware and costs ~$0.80 per hour of video using the pay as you go tier.
+This method is best for anyone that does not have acceleration hardware and costs ~$0.80 per hour of video using their pay as you go tier.
 
 ## 4. Run the Web Application
 Open the file 'index.html' located in the Open-Vision directory. (Tested on Microsoft Edge, Google Chrome, and Firefox).
