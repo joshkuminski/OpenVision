@@ -55,7 +55,7 @@ git clone https://github.com/joshkuminski/OpenVision.git
 ```
 OR (recommended)                                                                                               
 
-download the .zip file 
+download the .zip file and extract contents to your Documents folder.
 
 ## 2. Install requirements
 ### Windows 10
