@@ -82,8 +82,8 @@ def run(
         start_time=1600,
         colab=False,
 ):
-    if colab:
-        project = project.split('/')[-1].split('.')[0]
+    #if colab:
+    #    project = project.split('/')[-1].split('.')[0]
     source = str(source)
     save_img = not nosave and not source.endswith('.txt')  # save inference images
     is_file = Path(source).suffix[1:] in (VID_FORMATS)
