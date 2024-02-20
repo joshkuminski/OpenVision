@@ -36,8 +36,8 @@ in speed compared to CPU-only processing.
 # Background
 A Turning Movement Count, is commonly used in traffic engineering to model intersections and optimize signal timing.
 
-# Project Goal
-The goal of this project is to empoweer Traffic Engineers and reduce the barriers to entry into the object detection and tracking utilizing machine learing techniques.
+# Project Objective
+The objective of this project is to empower Traffic Engineers by reducing barriers to entry into the field of machine learning. We aim to make these advanced technologies accessible even for individuals without coding expertise, fostering inclusivity in the adoption of machine learning within the domain of Traffic Engineering.
 
 # Instructions
 ## Prerequisites for GPU
