@@ -96,6 +96,10 @@ Following the instructions on the Help page for directions on how to use. This w
 the zones in order to get Turning Movement Counts.
 
 ## 5. Run the Tracker
+### Cloud (Google Colab)
+Run the Colab example provided. There are instructions there on how to use or look at demo.mp4
+
+### Local
 Run the 'OV-track.bat' file as *Administrator* located in the root directory
   This will run the tracker. Select the video you wish to process when the file dialog appears. Make sure the Video Filename is formatted correctly (Output_YYYY-MM-DD_HH-MM-SS.mp4)
   
