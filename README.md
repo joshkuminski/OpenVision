@@ -97,7 +97,7 @@ the zones in order to get Turning Movement Counts.
 
 ## 5. Run the Tracker
 ### Cloud (Google Colab)
-Run the Colab example provided. 
+Run the Colab example: <a href="https://drive.google.com/file/d/1cO_PB-0fAVhQgy15IrIS3r89hfyTIUUd/view?usp=sharing"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"></a>
 
 There are instructions there on how to use or look at [Step 5 Demo](./Open-Vision/video/_.mp4)
 
