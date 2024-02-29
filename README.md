@@ -47,7 +47,7 @@ For More detailed instructions see [NVIDIA Docs](https://docs.nvidia.com/deeplea
 1. NVIDIA CUDA Toolkit: [CUDA(v11.3)](https://developer.nvidia.com/cuda-11.3.0-download-archive)
 2. NVIDIA Graphic Driver for your GPU.[NVIDIA Drivers](https://www.nvidia.com/Download/index.aspx?lang=en-us)
 3. cuDNN:[cuDNN](https://developer.nvidia.com/cudnn), Need to be registered for the NVIDIA Developer Program.
-   - This project has only been tested with cuDNN v8.3.2 and Cuda v11.3. If you use a different version, update requirements_gpu.txt.
+   - This project has only been tested with cuDNN v8.2.1 and Cuda v11.3. If you use a different version, update requirements_gpu.txt.
 
 ## 1. Clone this repo
 ```bash
