@@ -18,7 +18,7 @@
 
 
 OpenVision is the Framework for processing video from the [OpenVision Traffic Camera](https://github.com/joshkuminski/OpenVision-Traffic-Camera) module.
-With the OpenVision Camera this project can achieve 95%+ accuracy.
+With the OpenVision Camera this project can achieve 95%+ accuracy. You of course can use any video source you like, but accuracy is not guaranteed.
 
 # OpenVision
 Vehicle Detection and Tracking for Traffic Counts and Analytics.
