@@ -1,4 +1,5 @@
 const selectElements = document.querySelectorAll('select.drop_dwn');
+const A_cnt = 0;
 // Add a change event listener to each select element
 selectElements.forEach(select => {
     select.addEventListener('change', function() {
@@ -11,7 +12,9 @@ selectElements.forEach(select => {
         indx = ID.split("_")[2] - 1
         ZoneDef[indx] = Number(value);
 
-        if (indx == 0){
+        //Try to guess the movements based on the first dropdown selection.
+        if (indx == 0 && A_cnt == 0){
+            A_cnt += 1;
             // CALCULATE THE MIDPOINT OF EACH ZONE SEGMENT
             let midPoints = [];
             let midPoint;
