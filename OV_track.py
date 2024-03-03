@@ -406,6 +406,22 @@ def run(
             else:
                 strongsort_list[i].increment_ages()
                 print('No detections')
+                if (fps_count > num_frames_15) or (frame_num == nframes):
+                    interval += 1
+                    r, missed_Count = tmc_class.create_bin(interval, start_time=start_time,
+                                                           frame_data=frame_data, rtor=False,
+                                                           project=project, name=name)
+                    if frame_num == nframes:
+                        # Print results
+                        t = tuple(x / seen * 1E3 for x in dt)  # speeds per image
+                        print(f'Speed: %.1fms pre-process, %.1fms inference, %.1fms NMS, '
+                              f'%.1fms strong sort update per image at shape {(1, 3, imgsz, imgsz)}' % t)
+                        sys.exit()
+                    # reset counters and lists
+                    tmc_class.fps_count = 0
+                    fps_count = 0
+                    frame_data.clear()
+                    frame_data[:] = [[[]]]
 
             # Stream results
             if show_vid:
